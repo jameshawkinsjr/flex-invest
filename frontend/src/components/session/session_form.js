@@ -59,9 +59,6 @@ class SessionForm extends React.Component {
 
     handleSignup(e) {
         e.preventDefault();
-        console.log(this.state.name)
-        console.log(this.state.email)
-        console.log(this.state.password)
         let user = {
                 name: this.state.name,
                 email: this.state.email,
