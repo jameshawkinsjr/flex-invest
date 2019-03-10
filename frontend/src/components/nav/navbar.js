@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-// import './navbar.css';
-
 class NavBar extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            loggedIn: false,
+        }
         this.logoutCurrentUser = this.logoutCurrentUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
     }
@@ -16,27 +16,26 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
-        // if (this.props.location.pathname !== prevProps.location.pathname){
-        //     this.getLinks();
-        // }
+        if (this.props.location.pathname !== prevProps.location.pathname){
+            this.getLinks();
+        }
     }
 
     getLinks() {
+        debugger
         if (this.props.loggedIn) {
             return (
-                <div className="navbar-links flex">
-                    { `Welcome, ${this.props.user.name}`}
-                    <Link to={'/projections'}>Your Projections</Link>
-                    <Link to={'/profile'}>Your Profile</Link>
-                    <button onClick={this.logoutCurrentUser}>Logout</button>
+                <div className="flex">
+                    <Link className="navbar-link" to={'/projections'}>Your Projections</Link>
+                    <Link className="navbar-link" to={'/profile'}>Your Profile</Link>
+                    <button className="navbar-button" onClick={this.logoutCurrentUser}>Logout</button>
                 </div>
             );
         } else {
             return (
-                <div className="navbar-links flex">
-                    <Link to={'/signup'}>Sign Up</Link>
-                    <Link to={'/login'}>Login</Link>
+                <div className="flex">
+                    <Link className="navbar-button" to={'/signup'}>Sign Up</Link>
+                    <Link className="navbar-button" to={'/login'}>Login</Link>
                 </div>
             )
         }
@@ -45,9 +44,11 @@ class NavBar extends React.Component {
 
     render() {
         return (
-        <div className="navbar-container">
+        <div className="navbar-container flex">
             <div className="navbar-logo">
-                <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" width="200"></img>
+                <Link to={'/'}>
+                    <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="placeholder"></img>
+                </Link>
             </div>
             { this.getLinks() }
         </div>
