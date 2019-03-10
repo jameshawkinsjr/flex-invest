@@ -9,7 +9,7 @@ import SessionFormContainer from './session/session_form_container';
 
 
 const App = () => (
-    <>
+    <div>
         <header>
             <NavBarContainer />
         </header>
@@ -23,7 +23,7 @@ const App = () => (
         </main>
         <footer>
         </footer>
-    </>
+    </div>
 );
 
 export default App;
