@@ -1,26 +1,28 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const User = require("../../models/User");
+const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
-const validateRegisterInput = require('../../validation/register');
+const validateSignupInput = require('../../validation/signup');
 const validateLoginInput = require('../../validation/login');
 
 
-// Signup for an account
+// Account signup
+router.post('/signup', (req, res) => {
 
-router.post("/register", (req, res) => {
-    const {errors, isValid } = validateRegisterInput(req.body);
-
+    // Validations
+    const {errors, isValid } = validateSignupInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
+
+
     User.findOne( { email: req.body.email })
     .then( user => {
         if (user) {
-            errors.email = "That email is already taken.";
+            errors.email = 'That email is already taken.';
             return res.status(400).json(errors);
         } else {
             const newUser = new User({
@@ -44,8 +46,8 @@ router.post("/register", (req, res) => {
 // Log into an account
 router.post('/login', (req, res) => {
 
+    // Validations
     const {errors, isValid } = validateLoginInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }

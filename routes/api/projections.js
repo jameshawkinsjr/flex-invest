@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -37,7 +37,7 @@ router.post('/',
             return res.status(400).json(errors);
         }
 
-        const newProjection = new Tweet({
+        const newProjection = new Projection({
             user: req.user.id,
             yearToRetire: req.body.yearToRetire,
             income: req.body.income,
