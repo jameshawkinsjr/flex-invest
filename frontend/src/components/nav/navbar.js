@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 // import './navbar.css';
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
     constructor(props){
         super(props);
         this.logoutCurrentUser = this.logoutCurrentUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
     }
-
+    
     logoutCurrentUser(e) {
         e.preventDefault();
         this.props.logout();
@@ -38,7 +38,7 @@ export default class NavBar extends React.Component {
         return (
         <div className="navbar-container">
             <div className="navbar-logo">
-                <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" width="42"></img>
+                <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" width="200"></img>
             </div>
             { this.getLinks() }
         </div>
@@ -46,4 +46,4 @@ export default class NavBar extends React.Component {
     }
 }
 
-export default Navbar
+export default NavBar;

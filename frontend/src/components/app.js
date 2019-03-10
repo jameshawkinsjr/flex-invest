@@ -5,16 +5,25 @@ import { Switch } from 'react-router-dom';
 // Pages within our app
 import LandingPage from './landing_page';
 import NavBarContainer from './nav/navbar_container';
-import LoginFormContainer from './session/login_form_container';
-import SignupFormContainer from './session/signup_form_container';
+import SessionFormContainer from './session/session_form_container';
 
 
 const App = () => (
-    <Switch>
-        <AuthRoute exact path='/' component={LandingPage} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>
+    <>
+        <header>
+            <NavBarContainer />
+        </header>
+        <main>
+            <Switch>
+                <AuthRoute exact path='/' component={LandingPage}/>
+                <AuthRoute exact path="/login" component={SessionFormContainer}/>
+                <AuthRoute exact path="/signup" component={SessionFormContainer}/>
+                <ProtectedRoute exact path="/navbar" component={NavBarContainer}/>
+            </Switch>
+        </main>
+        <footer>
+        </footer>
+    </>
 );
 
 export default App;
