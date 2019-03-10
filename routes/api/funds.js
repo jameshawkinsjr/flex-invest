@@ -3,55 +3,48 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const Projection = require('../../models/projections');
-const validateProjectionInput = require('../../validation/projections');
+const Fund = require('../../models/Fund');
+const validateFundInput = require('../../validation/funds');
 
 
-// Get saved projections for a user
-router.get('/user/:user_id', (res, req) => {
-    Projection.find( {user: req.params.user_id})
-        .then(projections => res.json(projections))
-        .catch(err => 
-            res.status(404).json({ noprojectionsfound: 'No projections found for this user'}
-        )
-    );
-});
-
-// Get saved projections by projection id
-router.get('/:id', (req, res) => {
-    Projection.findById(req.params.id)
-        .then(projections => res.json(projections))
-        .catch( err => 
-            res.status(404).json({ noprojectionfound: 'No projection found with that id'}
-        )
-    );
+// Get all funds
+router.get('/', (req, res) => {
+    Fund.find()
+        .sort( { rank: -1 })
+        .then(funds => res.json(funds))
+        .catch( err => res.status(400).json( {nofunds: "No funds found"}));
 });
 
 // FEEDBACK
-// Submit a new projection model
-// Currently behind authentication in order to save for a specific user
-// If someone isn't logged in, we (probably) won't persist the projection
-// to the server. If we want to do that, we'd probably need an open
-// route to just save any projections
+// Get funds by ID (or symbol?)
+router.get('/:id', (req, res) => {
+    Fund.findById(req.params.id)
+        .then(fund => res.json(fund))
+        .catch( err => 
+            res.status(404).json({ nofundfound: 'No fund found with that id'}
+        )
+    );
+});
 
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        const {errors, isValid} = validateProjectionInput(req.body);
+        const {errors, isValid} = validateFundInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
-        const newProjection = new Projection({
-            user: req.user.id,
-            yearToRetire: req.body.yearToRetire,
-            income: req.body.income,
-            savingRate: req.body.savingRate,
-            employerMatch: req.body.employerMatch 
+        const newFund = new Fund({
+            rank: req.body.rank,
+            fundName: req.body.fundName,
+            symbol: req.body.symbol,
+            return: req.body.return,
+            assetsUnderManagment: req.body.assetsUnderManagment,
+            fundType: req.body.fundType,
         });
 
-        newProjection.save().then(projection => res.json(projection));
+        newFund.save().then(fund => res.json(fund));
     }
 );
 

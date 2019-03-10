@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
 
-module.exports = function validateProjectionInput(data) {
+module.exports = function validateFundInput(data) {
     let errors = {};
 
     // FEEDBACK
@@ -9,12 +9,12 @@ module.exports = function validateProjectionInput(data) {
     // if we're seeding the database with info and will
     // presumably be sanitizing our own inputs.
     
-    data.rank = validNum(data.yearToRetire) ? data.yearToRetire : '';
-    data.fundName = validText(data.income) ? data.income : '';
-    data.symbol = validText(data.savingRate) ? data.savingRate : '';
-    data.assets = validNum(data.employerMatch) ? data.employerMatch : '';
-    // data.return = validNum(data.employerMatch) ? data.employerMatch : '';
-    // data.fundType = validNum(data.employerMatch) ? data.employerMatch : '';
+    data.rank = validNum(data.rank) ? data.rank : '';
+    data.fundName = validText(data.fundName) ? data.fundName : '';
+    data.symbol = validText(data.symbol) ? data.symbol : '';
+    data.assetsUnderManagment = validNum(data.assetsUnderManagment) ? data.assetsUnderManagment : '';
+    // data.return = validNum(data.return) ? data.return : '';
+    // data.fundType = validNum(data.fundType) ? data.fundType : '';
 
 
     return {

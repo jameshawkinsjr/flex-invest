@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const Projection = require('../../models/projections');
+const Projection = require('../../models/Projection');
 const validateProjectionInput = require('../../validation/projections');
 
 
@@ -20,7 +20,7 @@ router.get('/user/:user_id', (res, req) => {
 // Get saved projections by projection id
 router.get('/:id', (req, res) => {
     Projection.findById(req.params.id)
-        .then(projections => res.json(projections))
+        .then(projection => res.json(projection))
         .catch( err => 
             res.status(404).json({ noprojectionfound: 'No projection found with that id'}
         )

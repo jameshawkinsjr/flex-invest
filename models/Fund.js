@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const FundSchema = new Schema({
     rank: {
-        type: number,
+        type: Number,
         min: 1,
     },
     fundName: {
@@ -24,7 +24,7 @@ const FundSchema = new Schema({
         type: Schema.Types.Mixed,
         required: true,
     },
-    assets: {
+    assetsUnderManagment: {
         type: Number,
     },
     fundType: {
