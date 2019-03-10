@@ -9,6 +9,7 @@ module.exports = function validateProjectionInput(data) {
     data.savingRate = validNum(data.savingRate) ? data.savingRate : '';
     data.employerMatch = validNum(data.employerMatch) ? data.employerMatch : '';
 
+    // FEEDBACK
     // Not sure what validations we would need here
     // If the inputs are submitted through a controlled form, the user shouldn't
     // be able to submit anything outside of bounds.
