@@ -16,15 +16,17 @@ class NavBar extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.location.pathname !== prevProps.location.pathname){
-            this.getLinks();
-        }
+        // debugger
+        // if (this.props.location.pathname !== prevProps.location.pathname){
+        //     this.getLinks();
+        // }
     }
 
     getLinks() {
         if (this.props.loggedIn) {
             return (
                 <div className="navbar-links flex">
+                    { `Welcome, ${this.props.user.name}`}
                     <Link to={'/projections'}>Your Projections</Link>
                     <Link to={'/profile'}>Your Profile</Link>
                     <button onClick={this.logoutCurrentUser}>Logout</button>
@@ -39,6 +41,7 @@ class NavBar extends React.Component {
             )
         }
     }
+    debugger
 
     render() {
         return (

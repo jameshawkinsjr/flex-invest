@@ -11,6 +11,7 @@ const SessionReducer = (state = initialState, action) => {
         case RECEIVE_CURRENT_USER:
             return {
                 ...state,
+                user: action.currentUser,
                 isSignedIn: true,
             }
         case RECEIVE_USER_LOGIN:
