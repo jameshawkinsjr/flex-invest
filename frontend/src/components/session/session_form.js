@@ -28,14 +28,15 @@ class SessionForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.currentUser === true) {
+        if (nextProps.currentUser) {
             this.props.history.push('/projections');
     // FEEDBACK 
     // Unsure about this routing -- combined these forms together and I'm
     // not positive about how this is supposed to work.
     // Don't quite understand why we're pushing to login?
-        } else if (nextProps.signedIn === true) {
-            this.props.history.push('/login');
+        } 
+        else if (nextProps.signedIn === true) {
+            this.props.history.push('/projections');
         }
         this.setState({errors: nextProps.errors});
     }
@@ -58,11 +59,14 @@ class SessionForm extends React.Component {
 
     handleSignup(e) {
         e.preventDefault();
-            let user = {
+        console.log(this.state.name)
+        console.log(this.state.email)
+        console.log(this.state.password)
+        let user = {
                 name: this.state.name,
                 email: this.state.email,
                 password: this.state.password,
-            };
+        };
             this.props.signup(user, this.props.history);
     }
 

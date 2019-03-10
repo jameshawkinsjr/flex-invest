@@ -9,10 +9,16 @@ class NavBar extends React.Component {
         this.logoutCurrentUser = this.logoutCurrentUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
     }
-    
+
     logoutCurrentUser(e) {
         e.preventDefault();
         this.props.logout();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname){
+            this.getLinks();
+        }
     }
 
     getLinks() {
@@ -21,7 +27,7 @@ class NavBar extends React.Component {
                 <div className="navbar-links flex">
                     <Link to={'/projections'}>Your Projections</Link>
                     <Link to={'/profile'}>Your Profile</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
+                    <button onClick={this.logoutCurrentUser}>Logout</button>
                 </div>
             );
         } else {

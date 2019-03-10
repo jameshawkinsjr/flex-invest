@@ -1,12 +1,10 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
-const validNum = require('./valid-num');
 
 module.exports = function validateSignupInput(data) {
     let errors = {};
-
     data.name = validText(data.name) ? data.name : '';
-    data.email = validText(data.email) ? data.email: '';
+    data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
 
     if (!Validator.isLength(data.name, {min: 1, max: 30} )) {
@@ -33,7 +31,7 @@ module.exports = function validateSignupInput(data) {
         errors.password = 'Password must be at least 8 characters';
     }
 
-    if (!Validator.isLength(data.handle, {max: 50} )) {
+    if (!Validator.isLength(data.password, {max: 50} )) {
         errors.password = 'Password must be fewer than 50 characters';
     }
 
