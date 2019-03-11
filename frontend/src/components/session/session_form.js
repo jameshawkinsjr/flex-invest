@@ -125,7 +125,9 @@ class SessionForm extends React.Component {
               </div>
                   </Animated>
             </form>
-            <div className="session-img"></div>
+            <div className="session-img">
+                    < img src = "https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" />
+            </div>
           </div>
         );
       }
