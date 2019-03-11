@@ -9,8 +9,9 @@ export class Form1 extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.checkFormInput();
-    this.props.increaseFormState();
+    if (!this.props.checkFormInput()) {
+      this.props.increaseFormState();
+    };
   }
 
   render() {
