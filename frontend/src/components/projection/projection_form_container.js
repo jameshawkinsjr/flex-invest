@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { receiveCurrentProjection } from '../../actions/projections_actions';
+import { saveProjection } from '../../actions/projections_actions';
 
 import ProjectionForm from './projection_form';
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  createProjection: (currentProjection) => dispatch(receiveCurrentProjection(currentProjection))
+  createProjection: (currentProjection) => dispatch(saveProjection(currentProjection))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectionForm);
