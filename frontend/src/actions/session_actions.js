@@ -25,9 +25,18 @@ export const logoutUser = () => ({
 // THUNK ACTIONS
 export const signup = user => dispatch => (
     APIUtil.signup(user)
-        .then(
-            () => dispatch(receiveUserLogin()),
-            err => dispatch(receiveSessionErrors(err.response.data))
+        .then( 
+            res => {
+                const { token } = res.data;
+                localStorage.setItem('jwtToken', token);
+                APIUtil.setAuthToken(token);
+                const decoded = jwt_decode(token);
+                dispatch(receiveCurrentUser(decoded));
+            })
+        .catch(
+            err => {
+                dispatch(receiveSessionErrors(err.response.data));
+            }
         )
 );
 

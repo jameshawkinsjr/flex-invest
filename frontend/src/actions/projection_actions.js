@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/projections_api_util';
+import * as APIUtil from '../util/projection_api_util';
 
 export const RECEIVE_CURRENT_PROJECTION = "RECEIVE_CURRENT_PROJECTION";
 export const RECEIVE_PROJECTION_ERRORS = "RECEIVE_PROJECTION_ERRORS";

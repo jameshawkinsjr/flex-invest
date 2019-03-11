@@ -5,7 +5,7 @@ const passport = require('passport');
 const db = require('./config/keys').mongoURI;
 
 const users = require('./routes/api/users');
-const projections = require('./routes/api/projections');
+const projection = require('./routes/api/projection');
 const funds = require('./routes/api/funds');
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use('/api/users', users);
-app.use('/api/projections', projections);
+app.use('/api/projection', projection);
 app.use('/api/funds', funds);
 
 const port = process.env.PORT || 5000;
