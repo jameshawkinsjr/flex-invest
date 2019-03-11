@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  createProjection: (info) => dispatch(receiveCurrentProjection(info))
+  createProjection: (currentProjection) => dispatch(receiveCurrentProjection(currentProjection))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectionForm);

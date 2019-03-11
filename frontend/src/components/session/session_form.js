@@ -31,17 +31,19 @@ class SessionForm extends React.Component {
     // }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.currentUser) {
-            this.props.history.push('/projections');
+      // debugger
+      // if (nextProps.currentUser) {
+          // this.props.history.push('/projections');
     // FEEDBACK 
     // Unsure about this routing -- combined these forms together and I'm
     // not positive about how this is supposed to work.
     // Don't quite understand why we're pushing to login?
-        } 
-        else if (nextProps.signedIn === true) {
-            this.props.history.push('/projections');
-        }
-        this.setState({errors: nextProps.errors});
+      // } 
+      // else if (nextProps.signedIn === true) {
+      //   debugger
+      //     // this.props.history.push('/projections');
+      // }
+      this.setState({errors: nextProps.errors});
     }
 
     checkFormType() {
