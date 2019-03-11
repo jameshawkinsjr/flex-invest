@@ -20,16 +20,10 @@ const App = () => (
                 <AuthRoute exact path='/' component={LandingPage}/>
                 <AuthRoute exact path="/login" component={SessionFormContainer}/>
                 <AuthRoute exact path="/signup" component={SessionFormContainer}/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
                 <Route exact path="/info" component={ProjectionFormContainer}/>
->>>>>>> c87ce23... Add projection form
                 {/* <ProtectedRoute exact path="/profile" component={ProfileContainer}/> */}
-=======
-                <Route exact path="/info" component={ProjectionContainer}/>
+                {/* <Route exact path="/info" component={ProjectionContainer}/> */}
                 <ProtectedRoute exact path="/navbar" component={NavBarContainer}/>
->>>>>>> 2802c9d... Add forms
             </Switch>
         </main>
         <footer>
