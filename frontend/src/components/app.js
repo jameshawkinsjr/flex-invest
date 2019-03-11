@@ -7,7 +7,7 @@ import LandingPage from './landing_page';
 import NavBarContainer from './nav/navbar_container';
 import SessionFormContainer from './session/session_form_container';
 import ProjectionFormContainer from './projection/projection_form_container';
-import ProjectionsContainer from './projections/projections_container';
+import ChartContainer from './chart/chart_container';
 
 
 const App = () => (
@@ -21,9 +21,7 @@ const App = () => (
                 <AuthRoute exact path="/login" component={SessionFormContainer}/>
                 <AuthRoute exact path="/signup" component={SessionFormContainer}/>
                 <Route exact path="/info" component={ProjectionFormContainer}/>
-                <Route path="/projections" component={ProjectionsContainer}/>
-                {/* <ProtectedRoute exact path="/profile" component={ProfileContainer}/> */}
-                {/* <Route exact path="/info" component={ProjectionContainer}/> */}
+                <Route path="/chart" component={ChartContainer}/>
                 <ProtectedRoute exact path="/navbar" component={NavBarContainer}/>
             </Switch>
         </main>
