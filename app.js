@@ -2,7 +2,7 @@ const mongoose = require ('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const db = require('./config/keys').mongoURI;
+// const db = require('./config/keys').mongoURI;
 
 const users = require('./routes/api/users');
 const projection = require('./routes/api/projection');
@@ -10,8 +10,10 @@ const funds = require('./routes/api/funds');
 
 const app = express();
 
+const uristring = process.env.PROD_MONGODB
+
 mongoose
-    .connect(db, {useNewUrlParser: true})
+    .connect(uristring, {useNewUrlParser: true})
     .then( () => console.log('Connected to MongoDB successfully'))
     .catch(err => console.log(err));
 
