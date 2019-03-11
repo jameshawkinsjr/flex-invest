@@ -1,4 +1,6 @@
 import React from 'react';
+import {Animated} from "react-animated-css";
+import "react-awesome-button/dist/styles.css";
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -21,11 +23,12 @@ class SessionForm extends React.Component {
         this.checkFormType();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.location.pathname !== prevProps.location.pathname){
-            this.checkFormType();
-        }
-    }
+    //DELETE NEED REVIEW
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.location.pathname !== prevProps.location.pathname){
+    //         this.checkFormType();
+    //     }
+    // }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentUser) {
@@ -42,14 +45,21 @@ class SessionForm extends React.Component {
     }
 
     checkFormType() {
-        if (this.props.location.pathname === '/login'){
+        if (this.props.formType === 'login'){
             this.setState( {formType: "Login"});
-        } else if (this.props.location.pathname === '/signup'){
+        } else if (this.props.formType === 'signup'){
             this.setState( {formType: "Signup"});
-        } else {
-            this.props.history.push('/login');
         }
     }
+    // checkFormType() {
+    //     if (this.props.location.pathname === '/login'){
+    //         this.setState( {formType: "Login"});
+    //     } else if (this.props.location.pathname === '/signup'){
+    //         this.setState( {formType: "Signup"});
+    //     } else {
+    //         this.props.history.push('/login');
+    //     }
+    // }
 
     handleUpdate(field) {
         return e => this.setState({
@@ -90,32 +100,38 @@ class SessionForm extends React.Component {
     
 
     render() {
+
         return (
-          <div className="session-form-container">
-            <form onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
-              <div className="session-form">
+          <div className="session-form-container flex">
+            <form className="flex" onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
+              <Animated animationIn="slideInLeft" animationInDelay="5s" animationOut="rubberBand" isVisible={true}>
+              <div className="session-form flex">
                 { this.state.formType === "Signup" ? (
-                    <input type="text"
-                      value={this.state.name}
-                      onChange={this.handleUpdate('name')}
-                      placeholder="Name"
-                    />
-                ) : ( "" )
+                  <input type="text"
+                  value={this.state.name}
+                  onChange={this.handleUpdate('name')}
+                  placeholder="Name"
+                  />
+                  ) : ( "" )
                 }
                   <input type="text"
                     value={this.state.email}
                     onChange={this.handleUpdate('email')}
-                    placeholder="Email"
+                    placeholder="  Email"
                   />
-                  <input type="password"
+                  <input type=" password"
                     value={this.state.password}
                     onChange={this.handleUpdate('password')}
-                    placeholder="Password"
+                    placeholder="  Password"
                   />
-                <input type="submit" value="Submit" />
-                {this.renderErrors()}
+                  <input type="submit" value="Submit" />
+                  <span>{this.renderErrors()}</span>
               </div>
+                  </Animated>
             </form>
+            <div className="session-img">
+                    < img src = "https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" />
+            </div>
           </div>
         );
       }
