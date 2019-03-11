@@ -1,6 +1,5 @@
 import React from 'react';
 import {Animated} from "react-animated-css";
-import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 class SessionForm extends React.Component {
@@ -24,11 +23,12 @@ class SessionForm extends React.Component {
         this.checkFormType();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.location.pathname !== prevProps.location.pathname){
-            this.checkFormType();
-        }
-    }
+    //DELETE NEED REVIEW
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.location.pathname !== prevProps.location.pathname){
+    //         this.checkFormType();
+    //     }
+    // }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentUser) {
@@ -45,14 +45,21 @@ class SessionForm extends React.Component {
     }
 
     checkFormType() {
-        if (this.props.location.pathname === '/login'){
+        if (this.props.formType === 'login'){
             this.setState( {formType: "Login"});
-        } else if (this.props.location.pathname === '/signup'){
+        } else if (this.props.formType === 'signup'){
             this.setState( {formType: "Signup"});
-        } else {
-            this.props.history.push('/login');
         }
     }
+    // checkFormType() {
+    //     if (this.props.location.pathname === '/login'){
+    //         this.setState( {formType: "Login"});
+    //     } else if (this.props.location.pathname === '/signup'){
+    //         this.setState( {formType: "Signup"});
+    //     } else {
+    //         this.props.history.push('/login');
+    //     }
+    // }
 
     handleUpdate(field) {
         return e => this.setState({
