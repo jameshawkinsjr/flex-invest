@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
   yearToRetire: 0, 
   income: 0,
   savingRate: 0,
-  employerMatch: 0
+  employerMatch: 0,
+  currentSavings: 0
 })
 
 
