@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_PROJECTION, RECEIVE_PROJECTION_ERRORS } from '../actions/projections_actions';
+import { RECEIVE_CURRENT_PROJECTION, RECEIVE_PROJECTION_ERRORS } from '../../actions/projections_actions';
 
 const _nullErrors = [];
 

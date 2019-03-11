@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_PROJECTION } from '../actions/projections_actions';
+import { RECEIVE_CURRENT_PROJECTION } from '../../actions/projections_actions';
 
 const ProjectionsReducer = (state = {}, action) => {
     Object.freeze(state);

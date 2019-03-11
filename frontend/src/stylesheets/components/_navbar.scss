@@ -1,12 +1,12 @@
 .navbar-container {
     font-family: $font-sans-serif;
-    background: $blue;
+    // background: $blue;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     // border-bottom: 2px solid $light-grey;
-    box-shadow: 0 1px 1px #888888;
+    // box-shadow: 0 1px 1px #888888;
 
     .navbar-link {
         font-size: 14px;
@@ -74,14 +74,15 @@
         font-size: 13px;
         font-weight: 700;
         padding: 8px;
-        background: $med-blue;
+        // background: $med-blue;
         color: $black;
         border-radius: 5px;
         text-decoration: none;
         margin: 10px;
         
         &:hover {
-            background: $dark-blue;
+            // background: $dark-blue;
+            transform: scale(1.1);
         }
     }   
 }
