@@ -5,7 +5,7 @@ class LandingPage extends React.Component {
         return (
             <div>
                 <h1>
-                    Welcome to flex-invest
+                    {/* Welcome to flex-invest */}
                 </h1>
             </div>
         )
