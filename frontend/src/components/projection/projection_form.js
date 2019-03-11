@@ -6,13 +6,14 @@ class ProjectionForm extends React.Component {
   constructor(props) {
     super(props);
 
-    let { name, yearToRetire, income, savingRate, employerMatch } = this.props
+    let { name, yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props
     this.state = {
       name, 
       yearToRetire, 
       income, 
       savingRate, 
       employerMatch, 
+      currentSavings,
       formState: 0,
       errors: {}
     }
@@ -48,7 +49,13 @@ class ProjectionForm extends React.Component {
   }
 
   checkForm2Input(e) {
-    
+    if (this.state.income === 0) {
+      alert("Income must be greater than 0!")
+      return true;
+    } else if (this.state.savingRate === 0) {
+      alert("Saving rate can't be blank!")
+      return true;
+    };
   }
 
   update(field) {

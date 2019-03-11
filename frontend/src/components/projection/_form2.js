@@ -9,7 +9,9 @@ export class Form2 extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createProjection(this.props.state);    
+    if (!this.props.checkFormInput()) {
+      this.props.createProjection(this.props.state);    
+    };
   }
 
   render() {
@@ -18,6 +20,18 @@ export class Form2 extends React.Component {
       <>
         Let's get personal
         <form onSubmit={this.handleSubmit}>
+         <label>
+            My current savings is
+            <br/>
+            <input 
+              type="number"
+              min="0"
+              onChange = {this.props.updateNumber("currentSavings")}
+              placeholder="Current Savings"
+              value={this.props.state.currentSavings}           
+            />
+          </label>
+            <br/>
           <label>
             My yearly income is 
             <br/>
