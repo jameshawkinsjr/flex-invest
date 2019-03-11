@@ -4,20 +4,20 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Projection = require('../../models/Projection');
-const validateProjectionInput = require('../../validation/projections');
+const validateProjectionInput = require('../../validation/projection');
 
 
-// Get saved projections for a user
+// Get saved projection for a user
 router.get('/user/:user_id', (res, req) => {
     Projection.find( {user: req.params.user_id})
-        .then(projections => res.json(projections))
+        .then(projection => res.json(projection))
         .catch(err => 
-            res.status(404).json({ noprojectionsfound: 'No projections found for this user'}
+            res.status(404).json({ noprojectionfound: 'No projection found for this user'}
         )
     );
 });
 
-// Get saved projections by projection id
+// Get saved projection by projection id
 router.get('/:id', (req, res) => {
     Projection.findById(req.params.id)
         .then(projection => res.json(projection))
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 // Currently behind authentication in order to save for a specific user
 // If someone isn't logged in, we (probably) won't persist the projection
 // to the server. If we want to do that, we'd probably need an open
-// route to just save any projections
+// route to just save any projection
 
 router.post('/',
     passport.authenticate('jwt', { session: false }),

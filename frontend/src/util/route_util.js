@@ -6,7 +6,7 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 
 // FEEDBACK
 // Where do we want to reroute someone to if they're logged in?
-// For now, I'm going to call this /projections
+// For now, I'm going to call this /projection
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
     <Route 
@@ -16,7 +16,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
             !loggedIn? (
                 <Component {...props} />
             ) : (
-                <Redirect to="/projections" />
+                <Redirect to="/projection" />
                 )
         )} 
     />

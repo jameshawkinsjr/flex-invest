@@ -6,8 +6,9 @@ class ProjectionForm extends React.Component {
   constructor(props) {
     super(props);
 
-    let { name, yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props
+    let { name, yearToRetire, income, savingRate, employerMatch, currentSavings, user } = this.props
     this.state = {
+      user,
       name, 
       yearToRetire, 
       income, 
