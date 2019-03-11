@@ -8,6 +8,7 @@ import NavBarContainer from './nav/navbar_container';
 import SessionFormContainer from './session/session_form_container';
 import ProjectionFormContainer from './projection/projection_form_container';
 import ProjectionsContainer from './projections/projections_container';
+import Footer from './footer/footer';
 
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
             </Switch>
         </main>
         <footer>
+            <Footer />
         </footer>
     </div>
 );
