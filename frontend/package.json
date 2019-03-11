@@ -8,6 +8,7 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-animated-css": "^1.0.4",
+    "react-awesome-button": "^6.0.0",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"
   },

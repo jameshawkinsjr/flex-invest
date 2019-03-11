@@ -1,5 +1,7 @@
 import React from 'react';
 import {Animated} from "react-animated-css";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -118,8 +120,8 @@ class SessionForm extends React.Component {
                     onChange={this.handleUpdate('password')}
                     placeholder="  Password"
                   />
-                    <input type="submit" value="Submit" />
-                <span>{this.renderErrors()}</span>
+                  <input type="submit" value="Submit" />
+                  <span>{this.renderErrors()}</span>
               </div>
                   </Animated>
             </form>
