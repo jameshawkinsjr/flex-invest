@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            loggedIn: false,
-        }
         this.logoutCurrentUser = this.logoutCurrentUser.bind(this);
         this.getLinks = this.getLinks.bind(this);
     }
@@ -24,10 +21,15 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div className="flex">
-                    <Link className="navbar-link" to={'/projections'}>Your Projections</Link>
-                    <Link className="navbar-link" to={'/profile'}>Your Profile</Link>
-                    <button className="navbar-button" onClick={this.logoutCurrentUser}>Logout</button>
+                <div className="navbar-links flex">
+                        <Link className="navbar-link" to={'/projections'}>Your Projections</Link>
+                        <div className="navbar-dropdown">
+                            <button className="navbar-dropdown-button">Your account</button>
+                            <div className="navbar-dropdown-content">
+                                <Link className="navbar-dropdown-link" to={'/profile'}>Your Profile</Link>
+                                <button className="navbar-dropdown-link" onClick={this.logoutCurrentUser}>Logout</button>
+                            </div>
+                        </div>
                 </div>
             );
         } else {
