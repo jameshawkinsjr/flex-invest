@@ -94,31 +94,32 @@ class SessionForm extends React.Component {
 
     render() {
         return (
-          <div className="session-form-container">
-            <form onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
-              <div className="session-form">
+          <div className="session-form-container flex">
+            <form className="flex" onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
+              <div className="session-form flex">
                 { this.state.formType === "Signup" ? (
-                    <input type="text"
-                      value={this.state.name}
-                      onChange={this.handleUpdate('name')}
-                      placeholder="Name"
-                    />
-                ) : ( "" )
+                  <input type="text"
+                  value={this.state.name}
+                  onChange={this.handleUpdate('name')}
+                  placeholder="Name"
+                  />
+                  ) : ( "" )
                 }
                   <input type="text"
                     value={this.state.email}
                     onChange={this.handleUpdate('email')}
-                    placeholder="Email"
+                    placeholder="  Email"
                   />
-                  <input type="password"
+                  <input type=" password"
                     value={this.state.password}
                     onChange={this.handleUpdate('password')}
-                    placeholder="Password"
+                    placeholder="  Password"
                   />
                 <input type="submit" value="Submit" />
-                {this.renderErrors()}
+                <span>{this.renderErrors()}</span>
               </div>
             </form>
+            <div className="session-img"></div>
           </div>
         );
       }

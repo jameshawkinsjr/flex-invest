@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jameshawkinsjr/flex-invest#readme",
   "dependencies": {
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
