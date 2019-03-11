@@ -9,10 +9,11 @@ export class Form2 extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.increaseFormState();
+    this.props.createProjection(this.props.state);    
   }
 
   render() {
+    console.log(this.props.state)
     return (
       <>
         Let's get personal
@@ -21,8 +22,9 @@ export class Form2 extends React.Component {
             My yearly income is 
             <br/>
             <input 
-              type="number" 
-              onChange = {this.props.update("income")}
+              type="number"
+              min="0"
+              onChange = {this.props.updateNumber("income")}
               placeholder="Income"
               value={this.props.state.income}           
             />
@@ -34,7 +36,8 @@ export class Form2 extends React.Component {
             <input 
               type="number"
               step="0.01" 
-              onChange = {this.props.update("savingRate")}
+              min="0"
+              onChange = {this.props.updateNumber("savingRate")}
               placeholder="Saving Rate"
               value={this.props.state.savingRate}           
 
@@ -45,8 +48,9 @@ export class Form2 extends React.Component {
             My employer matches: 
             <br/>
             <input 
-              type="text" 
-              onChange = {this.props.update("employerMatch")}
+              type="number"
+              min="0" 
+              onChange = {this.props.updateNumber("employerMatch")}
               placeholder="Employer Match"
               value={this.props.state.employerMatch}
             />
