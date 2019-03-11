@@ -1,29 +1,38 @@
 .session-form-container {
-  width: 100%;
+  width: 500px;
   height: 500px;
 }
 
 .session-form-container > form {
-  width: 50%;
+  width: 379px;
   height: 100%;
+  justify-content: center;
+
   // background-image: radial-gradient(black, white);
   background-image: linear-gradient(to right, darkgray, white);
 }
 
 .session-img {
-  width: 50%;
+  width: 122px;
   height: 100%;
   background: white;
+  display: flex;
+  justify-content: flex-start;
 }
 
-form {
-  justify-content: center;
-  align-items: center;
+.session-img > img {
+  width: 120px;
+  height: 100px;
+  background: white;
+  margin-top: 15px;
+  margin-left: -10px;
 }
+
 
 .session-form {
   flex-direction: column;
   align-content : center;
+  margin-top: 100px;
 }
 
 input {
@@ -34,21 +43,54 @@ input {
   border-radius: 5px;
 }
 
-.session-form > input:nth-child(3) {
+.input-submit {
   background: darkgray;
   color: white;
   font-size: 17px;
   font-weight: bold;
 }
 
-.session-form > input:nth-child(3):hover { 
+.input-submit:hover {
   // color: peachpuff;
   box-shadow: 5px 5px goldenrod;
 }
+// .session-form > input:nth-child(3) {
+//   background: darkgray;
+//   color: white;
+//   font-size: 17px;
+//   font-weight: bold;
+// }
+
+// .session-form > input:nth-child(3):hover { 
+//   // color: peachpuff;
+//   box-shadow: 5px 5px goldenrod;
+// }
 
 
+.alternate-buttons {
+  position: absolute;
+  top: 390px;
+  width: 379px;
+  text-align: center;
+}
 
-span {
+.alternate-buttons > span {
+  margin-right: 10px;
+  color: black;
+  font-size: 14px;
+}
+.alternate-buttons > button {
+  margin-left: 10px;
+  font-size: 13px;
+  background: cornflowerblue;
+  padding: 5px;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+}
+
+.alternate-buttons>span:nth-child(3) {
   color: red;
   font-size: 11px;
   width: 300px;
