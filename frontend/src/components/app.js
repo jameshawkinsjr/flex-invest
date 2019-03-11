@@ -7,6 +7,7 @@ import LandingPage from './landing_page';
 import NavBarContainer from './nav/navbar_container';
 import SessionFormContainer from './session/session_form_container';
 import ProjectionFormContainer from './projection/projection_form_container';
+import Footer from './footer/footer';
 import ChartContainer from './chart/chart_container';
 
 
@@ -26,6 +27,7 @@ const App = () => (
             </Switch>
         </main>
         <footer>
+            <Footer />
         </footer>
     </div>
 );
