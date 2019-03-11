@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SesssionFormContainer from '../session/session_form_container';
-
+import { withRouter } from 'react-router-dom';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -40,4 +40,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
