@@ -1,6 +1,6 @@
-import { RECEIVE_CURRENT_PROJECTION } from '../../actions/projections_actions';
+import { RECEIVE_CURRENT_PROJECTION } from '../../actions/projection_actions';
 
-const ProjectionsReducer = (state = {}, action) => {
+const ProjectionReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_CURRENT_PROJECTION:
@@ -10,4 +10,4 @@ const ProjectionsReducer = (state = {}, action) => {
     }
 };
 
-export default ProjectionsReducer;
+export default ProjectionReducer;

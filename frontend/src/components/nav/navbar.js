@@ -22,7 +22,7 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="navbar-links flex">
-                        <Link className="navbar-link" to={'/projections'}>Your Projections</Link>
+                        <Link className="navbar-link" to={'/projection'}>Your Projection</Link>
                         <div className="navbar-dropdown">
                             <button className="navbar-dropdown-button">Your account</button>
                             <div className="navbar-dropdown-content">

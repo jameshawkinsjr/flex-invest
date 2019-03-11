@@ -14,6 +14,10 @@ const ProjectionSchema = new Schema({
         type: Number,
         required: true,
     },
+    currentSavings: {
+        type: Number,
+        required: true
+    },
     savingRate: {
         type: Number,
         required: true,
