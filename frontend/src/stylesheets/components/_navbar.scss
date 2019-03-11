@@ -1,8 +1,90 @@
-.top-nav {
-  background-image: linear-gradient(to right, darkgray, white);
+.navbar-container {
+    font-family: $font-sans-serif;
+    // background: $blue;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    // border-bottom: 2px solid $light-grey;
+    // box-shadow: 0 1px 1px #888888;
 
+    .navbar-link {
+        font-size: 14px;
+        align-self: center;
+        margin: 0 10px;
+    }
+
+    .navbar-logo {
+        img {
+            width: 150px;
+            &:hover {
+                transform: scale(1.01);
+            }
+        }
+    }
+
+    .navbar-dropdown-button {
+        background: none;
+        color: $black;
+        padding: 16px;
+        border: none;
+    }
+
+    .navbar-links {
+        a {
+            font-size: 14px;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+    }
+    
+    .navbar-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .navbar-dropdown-content {
+        display: none;
+        position: absolute;
+        right: 10px;
+        background-color: $white;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .navbar-dropdown-content .navbar-dropdown-link {
+        font-size: 14px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+    }
+    
+    .navbar-dropdown-content .navbar-dropdown-link:hover {
+        background: $med-grey;
+    }
+    
+    .navbar-dropdown:hover .navbar-dropdown-content {
+        display: block;
+    }
+
+    .navbar-button {
+        font-size: 13px;
+        font-weight: 700;
+        padding: 8px;
+        // background: $med-blue;
+        color: $black;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px;
+        
+        &:hover {
+            // background: $dark-blue;
+            transform: scale(1.1);
+        }
+    }   
 }
 
-.nav-bar-button {
- 
-}
+
