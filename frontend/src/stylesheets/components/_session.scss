@@ -6,13 +6,15 @@
 .session-form-container > form {
   width: 50%;
   height: 100%;
-  background: white;
+  // background-image: radial-gradient(black, white);
+  background-image: linear-gradient(to right, black, white);
+  ;
 }
 
 .session-img {
   width: 50%;
   height: 100%;
-  background: whitesmoke;
+  background: white;
 }
 
 form {

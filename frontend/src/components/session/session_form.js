@@ -1,4 +1,5 @@
 import React from 'react';
+import {Animated} from "react-animated-css";
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -93,9 +94,11 @@ class SessionForm extends React.Component {
     
 
     render() {
+
         return (
           <div className="session-form-container flex">
             <form className="flex" onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
+              <Animated animationIn="slideInLeft" animationInDelay="5s" animationOut="rubberBand" isVisible={true}>
               <div className="session-form flex">
                 { this.state.formType === "Signup" ? (
                   <input type="text"
@@ -115,9 +118,10 @@ class SessionForm extends React.Component {
                     onChange={this.handleUpdate('password')}
                     placeholder="  Password"
                   />
-                <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" />
                 <span>{this.renderErrors()}</span>
               </div>
+                  </Animated>
             </form>
             <div className="session-img"></div>
           </div>
