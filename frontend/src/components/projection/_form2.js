@@ -10,7 +10,7 @@ export class Form2 extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (!this.props.checkFormInput()) {
-      this.props.createProjection(this.props.state);    
+      this.props.createProjection(this.props.state);
     };
   }
 

@@ -42,6 +42,7 @@ class SessionForm extends React.Component {
     //         this.props.history.push('/projection');
     //     }
     //     this.setState({errors: nextProps.errors});
+      this.setState({errors: nextProps.errors});
     }
 
     checkFormType() {
