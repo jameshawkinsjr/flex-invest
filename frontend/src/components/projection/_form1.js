@@ -32,7 +32,7 @@ export class Form1 extends React.Component {
           <br/>
           <br/>
           I want to retire in 
-          <select onChange = {this.props.update("yearToRetire")}>
+          <select onChange = {this.props.updateNumber("yearToRetire")}>
             <option value="0">Year</option>
             <option value={`${currentYear + 1}`}>{currentYear + 1}</option>
             <option value={`${currentYear + 2}`}>{currentYear + 2}</option>
@@ -64,6 +64,26 @@ export class Form1 extends React.Component {
             <option value={`${currentYear + 28}`}>{currentYear + 28}</option>
             <option value={`${currentYear + 29}`}>{currentYear + 29}</option>
             <option value={`${currentYear + 30}`}>{currentYear + 30}</option>
+            <option value={`${currentYear + 31}`}>{currentYear + 31}</option>
+            <option value={`${currentYear + 32}`}>{currentYear + 32}</option>
+            <option value={`${currentYear + 33}`}>{currentYear + 33}</option>
+            <option value={`${currentYear + 34}`}>{currentYear + 34}</option>
+            <option value={`${currentYear + 35}`}>{currentYear + 35}</option>
+            <option value={`${currentYear + 36}`}>{currentYear + 36}</option>
+            <option value={`${currentYear + 37}`}>{currentYear + 37}</option>
+            <option value={`${currentYear + 38}`}>{currentYear + 38}</option>
+            <option value={`${currentYear + 39}`}>{currentYear + 39}</option>
+            <option value={`${currentYear + 40}`}>{currentYear + 40}</option>
+            <option value={`${currentYear + 41}`}>{currentYear + 41}</option>
+            <option value={`${currentYear + 42}`}>{currentYear + 42}</option>
+            <option value={`${currentYear + 43}`}>{currentYear + 43}</option>
+            <option value={`${currentYear + 44}`}>{currentYear + 44}</option>
+            <option value={`${currentYear + 45}`}>{currentYear + 45}</option>
+            <option value={`${currentYear + 46}`}>{currentYear + 46}</option>
+            <option value={`${currentYear + 47}`}>{currentYear + 47}</option>
+            <option value={`${currentYear + 48}`}>{currentYear + 48}</option>
+            <option value={`${currentYear + 49}`}>{currentYear + 49}</option>
+            <option value={`${currentYear + 50}`}>{currentYear + 50}</option>
           </select>
           <br/>
           <input type="submit" value="next"/>

@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "d3": "^5.9.1",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.4",
     "react-animated-css": "^1.0.4",
     "react-awesome-button": "^6.0.0",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "recharts": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

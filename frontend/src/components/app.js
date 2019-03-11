@@ -8,6 +8,8 @@ import NavBarContainer from './nav/navbar_container';
 import ProjectionFormContainer from './projection/projection_form_container';
 import Modal from './modal/modal';
 
+import Footer from './footer/footer';
+import ChartContainer from './chart/chart_container';
 
 
 const App = () => (
@@ -20,10 +22,12 @@ const App = () => (
             <Switch>
                 <AuthRoute exact path='/' component={LandingPage}/>
                 <Route exact path="/info" component={ProjectionFormContainer}/>
+                <Route path="/chart" component={ChartContainer}/>
                 <ProtectedRoute exact path="/navbar" component={NavBarContainer}/>
             </Switch>
         </main>
         <footer>
+            <Footer />
         </footer>
     </div>
 );
