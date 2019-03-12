@@ -4,16 +4,14 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from '
 class Chart extends React.Component {
     constructor(props){
         super(props);
-        let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection
+        // let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection
         this.state = {
-            yearToRetire,
-            income,
-            savingRate,
-            employerMatch,
-            currentSavings,
-            today: Date.now(),
+            yearToRetire: 2030,
+            income: 100000,
+            savingRate: 0.08,
+            employerMatch: 0.06,
             currentSavings: 10000,
-            estimatedRateOfReturn: .08,
+            estimatedRateOfReturn: 0.08,
             currentYear: new Date().getFullYear(),
             opacity: {
                 savings: 1,
@@ -35,11 +33,15 @@ class Chart extends React.Component {
     }
 
     calculationFormula() {
+      let monthlyContribution = (this.state.income * this.state.savingRate / 12);
+      let employerMatch = (this.state.income * this.state.employerMatch / 12);
       let chartData = [];
-      let currentPrincipal = this.state.currentSavings;
+      let principalWithoutMatch = this.state.currentSavings;
+      let principalWithMatch = this.state.currentSavings;
       for ( let i = this.state.currentYear; i <= this.state.yearToRetire; i++ ) {
-        currentPrincipal = this.calculateYearReturn( currentPrincipal, this.state.monthlyContribution, this.state.estimatedRateOfReturn, 12);
-        chartData.push( {  name: i, "line1": currentPrincipal, "line2": (currentPrincipal) } );
+        principalWithoutMatch = this.calculateYearReturn( principalWithoutMatch, monthlyContribution, this.state.estimatedRateOfReturn, 12);
+        principalWithMatch = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12);
+        chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch) } );
       }
       this.setState({ chartData: chartData});
     }
@@ -59,8 +61,10 @@ class Chart extends React.Component {
 
       handleInput(field) {
         return (e) => {
-            this.setState({ [field]: e.currentTarget.value });
+            this.setState({ [field]: e.target.value });
+            this.calculationFormula();
         };
+
     }
     
     handleMouseLeave = (o) => {
@@ -72,34 +76,13 @@ class Chart extends React.Component {
       });
     }
 
-    // componentWillUpdate(prevProps) {
-    //   debugger
-    // }
     componentDidMount() {
       this.calculationFormula();
     }
-      
 
 
     render() {
         const { opacity } = this.state;
-
-        const getIntroOfPage = (label) => {
-          if (label === 'Page A') {
-            return "Page A is about men's clothing";
-          } if (label === 'Page B') {
-            return "Page B is about women's dress";
-          } if (label === 'Page C') {
-            return "Page C is about women's bag";
-          } if (label === 'Page D') {
-            return 'Page D is about household goods';
-          } if (label === 'Page E') {
-            return 'Page E is about food';
-          } if (label === 'Page F') {
-            return 'Page F is about baby food';
-          }
-        };
-        
         
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
@@ -115,10 +98,8 @@ class Chart extends React.Component {
           if (active) {
             return (
               <div className="custom-tooltip">
-                <p className="label">{`${label} : ${formatter.format(payload[0].value)}`}</p>
-                <p className="label">{`${label} : ${formatter.format(payload[0].value)}`}</p>
-                {/* <p className="intro">{getIntroOfPage(label)}</p> */}
-                {/* <p className="desc">Anything you want can be displayed here.</p> */}
+                <p className="label">{`With Match : ${formatter.format(payload[0].value)}`}</p>
+                <p className="label">{`Without Match : ${formatter.format(payload[1].value)}`}</p>
               </div>
             );
           }
@@ -126,33 +107,6 @@ class Chart extends React.Component {
           return null;
         };
 
-        let data = [
-            { name : '2019' ,  "line1" : 100000, "line2" : 110000 } , 
-            { name : '2020' ,  "line1" : 120000, "line2" : (120000 ** (this.state.savingRate)) } , 
-            { name : '2021' ,  "line1" : 140000, "line2" : (140000 ** (this.state.savingRate)) } , 
-            { name : '2022' ,  "line1" : 180000, "line2" : (180000 ** (this.state.savingRate)) } , 
-            { name : '2023' ,  "line1" : 260000, "line2" : (260000 ** (this.state.savingRate)) } , 
-            { name : '2024' ,  "line1" : 460000, "line2" : (460000 ** (this.state.savingRate)) } , 
-            { name : '2025' ,  "line1" : 890000, "line2" : (890000 ** (this.state.savingRate)) } , 
-            { name : '2026' ,  "line1" : 1100000, "line2" : (1100000 ** (this.state.savingRate)) } , 
-            { name : '2027' ,  "line1" : 2300000, "line2" : (2300000 ** (this.state.savingRate)) } , 
-            { name : '2028' ,  "line1" : 4000000, "line2" : (4000000 ** (this.state.savingRate)) } , 
-            { name : '2029' ,  "line1" : 7800000, "line2" : (7800000 ** (this.state.savingRate)) } , 
-            { name : '2030' ,  "line1" : 12000000, "line2" : (12000000 ** (this.state.savingRate)) } , 
-            { name : '2031' ,  "line1" : 12000000, "line2" : (12200000 ** (this.state.savingRate)) } , 
-            { name : '2032' ,  "line1" : 12000000, "line2" : (12400000 ** (this.state.savingRate)) } , 
-            { name : '2033' ,  "line1" : 12000000, "line2" : (12800000 ** (this.state.savingRate)) } , 
-            { name : '2034' ,  "line1" : 12000000, "line2" : (13200000 ** (this.state.savingRate)) } , 
-            { name : '2035' ,  "line1" : 12000000, "line2" : (13800000 ** (this.state.savingRate)) } , 
-            { name : '2036' ,  "line1" : 12000000, "line2" : (14800000 ** (this.state.savingRate)) } , 
-            { name : '2037' ,  "line1" : 12000000, "line2" : (15800000 ** (this.state.savingRate)) } , 
-            { name : '2038' ,  "line1" : 12000000, "line2" : (17900000 ** (this.state.savingRate)) } , 
-            { name : '2039' ,  "line1" : 12000000, "line2" : (20000000 ** (this.state.savingRate)) } , 
-            { name : '2040' ,  "line1" : 12000000, "line2" : (22000000 ** (this.state.savingRate)) } , 
-            { name : '2041' ,  "line1" : 12000000, "line2" : (24000000 ** (this.state.savingRate)) } , 
-            { name : '2042' ,  "line1" : 12000000, "line2" : (28000000 ** (this.state.savingRate)) } , 
-            { name : '2043' ,  "line1" : 12000000, "line2" : (36000000 ** (this.state.savingRate)) } , 
-        ]
         return (
           <div className="chart-layout flex">
             <div className="chart-container flex-column">
@@ -173,7 +127,7 @@ class Chart extends React.Component {
                     dot={false} 
                     activeDot={{ r: 1 }} 
                     animationBegin={0}
-                    animationDuration={1500}
+                    animationDuration={500}
                     stroke="#4840BA"
                   />
                 {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
@@ -184,8 +138,8 @@ class Chart extends React.Component {
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
-                    animationBegin={1000}
-                    animationDuration={1500}
+                    animationBegin={0}
+                    animationDuration={500}
                     activeDot={{ r: 1 }}
                     stroke="#4483EF"
                   />
@@ -194,10 +148,34 @@ class Chart extends React.Component {
             <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
-                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("savingRate") }/>
-                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput("yearToRetire") }/>
-                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.income} className="slider" onChange={ this.handleInput("income") }/>
-                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/>
+                    Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
+                    <br/>
+                    1% <input type="range" min={0.01} max={1} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("savingRate") }/> 100%
+                    <br/>
+                    <br/>
+                    Retirement Year ({Math.floor(this.state.yearToRetire)}): 
+                    <br/>
+                    {this.state.currentYear} <input type="range" min={this.state.currentYear} max={this.state.currentYear + 60} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput("yearToRetire") }/> {this.state.currentYear + 60}
+                    <br/>
+                    <br/>
+                    Annual Income ({toDollars(Math.floor(this.state.income))}):
+                    <br/>
+                    {toDollars(0)}<input type="range" min={0} max={1000000} step="10000" value={this.state.income} className="slider" onChange={ this.handleInput("income") }/>{toDollars(1000000)}
+                    <br/>
+                    <br/>
+                    Employer Match ({Math.floor(this.state.employerMatch*100)}%): 
+                    <br/>
+                    0% <input type="range" min={.0} max={.1} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/> 100%
+                    <br/>
+                    <br/>
+                    Estimated Yearly Market Return ({Math.floor(this.state.estimatedRateOfReturn*100)}%): 
+                    <br/>
+                    0% <input type="range" min={0.00} max={.5} step=".01" value={this.state.estimatedRateOfReturn} className="slider" onChange={ this.handleInput("estimatedRateOfReturn") }/> 50%
+                    <br/>
+                    <br/>
+                    Current Savings ({ toDollars(Math.floor(this.state.currentSavings))}): 
+                    <br/>
+                    {toDollars(0)} <input type="range" min={0} max={10000000} step="1" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
                   </div>
                 </div>
         </div>
