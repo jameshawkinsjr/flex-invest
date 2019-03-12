@@ -124,15 +124,15 @@ class SessionForm extends React.Component {
                 </div>
             </div>
             <div className="alternate-buttons">
-                { this.props.formType === 'login' ?
+                { this.props.formType === 'signup' ?
                     <>
                         <span>Already a member?</span>
-                        <button onClick={this.props.openSignupModal}>Sign Up</button>
+                        <button onClick={this.props.openSignupModal}>Login</button>
                     </>
                     :
                     <>
                         <span>New to 💪Invest?</span>
-                        <button onClick={this.props.openLoginModal}>Login</button>
+                        <button onClick={this.props.openLoginModal}>Sign Up</button>
                     </>
                 }
                 <span>{this.renderErrors()}</span>
