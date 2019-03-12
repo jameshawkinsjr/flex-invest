@@ -21,6 +21,7 @@ class ProjectionForm extends React.Component {
     this.increaseFormState = this.increaseFormState.bind(this);
     this.decreaseFormState = this.decreaseFormState.bind(this);
     this.checkForm1Input = this.checkForm1Input.bind(this);
+    this.checkForm2Input = this.checkForm2Input.bind(this);
   }
 
   increaseFormState(e) {
@@ -68,7 +69,6 @@ class ProjectionForm extends React.Component {
 
   updateNumber(field) {
     return (e) => {
-      console.log(parseFloat(e.currentTarget.value));
       this.setState({
         [field]: parseFloat(e.currentTarget.value)
       })
