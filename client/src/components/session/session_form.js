@@ -94,7 +94,7 @@ class SessionForm extends React.Component {
         // const altButtonStyle2 = {
         //     top: '390px',
         // };
-        const altButtonStyle = this.props.formType === 'login' ? {top: '390px'} : {top: '320px'}
+        const altButtonStyle = this.props.formType === 'login' ? {top: '320px'} : {top: '390px'}
 
         return (
             <>
