@@ -134,7 +134,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate with Match - Line 2"
                     dataKey="line2"
                     strokeOpacity={opacity.savings}
                     dot={false} 
@@ -147,7 +147,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate with Match - Line 1"
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
