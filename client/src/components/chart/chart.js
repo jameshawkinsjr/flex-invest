@@ -119,51 +119,52 @@ class Chart extends React.Component {
         ]
 
         return (
-        <div className="chart-container flex-column">
-            <LineChart 
-                width={500} height={300} data={data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
-            >
-            <XAxis dataKey="name" />
-            <YAxis tickFormatter={toDollars} />
-            <Tooltip content={<CustomTooltip />} />
-            <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
-            <Line 
-                legendType="square"
-                type="monotone"
-                name="Saving Rate with Match"
-                dataKey="line2"
-                strokeOpacity={opacity.savings}
-                dot={false} 
-                activeDot={{ r: 1 }} 
-                animationBegin={0}
-                animationDuration={1500}
-                stroke="#4840BA"
-              />
-            {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
-            <Line 
-                legendType="square"
-                type="monotone"
-                name="Saving Rate with Match"
-                dataKey="line1"
-                strokeOpacity={opacity.savings2}
-                dot={false}
-                animationBegin={1000}
-                animationDuration={1500}
-                activeDot={{ r: 1 }}
-                stroke="#4483EF"
-              />
-            </LineChart>
-            <div>
-              <div className="chart-inputs">
-                Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/>
-                Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                <br/>Saving Rate: { this.state.savingRate}
-                <br/>
-                <br/>Savings 1:{ data[0].savings}
-                <br/>Savings 2:{ data[0].savings2 }
-              </div>
+          <div className="chart-layout flex">
+            <div className="chart-container flex-column">
+                <LineChart 
+                    width={500} height={300} data={data}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+                >
+                <XAxis dataKey="name" />
+                <YAxis tickFormatter={toDollars} />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                <Line 
+                    legendType="square"
+                    type="monotone"
+                    name="Saving Rate with Match"
+                    dataKey="line2"
+                    strokeOpacity={opacity.savings}
+                    dot={false} 
+                    activeDot={{ r: 1 }} 
+                    animationBegin={0}
+                    animationDuration={1500}
+                    stroke="#4840BA"
+                  />
+                {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
+                <Line 
+                    legendType="square"
+                    type="monotone"
+                    name="Saving Rate with Match"
+                    dataKey="line1"
+                    strokeOpacity={opacity.savings2}
+                    dot={false}
+                    animationBegin={1000}
+                    animationDuration={1500}
+                    activeDot={{ r: 1 }}
+                    stroke="#4483EF"
+                  />
+                </LineChart>
             </div>
+            <div>
+                  <div className="chart-inputs">
+                    {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
+                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                  </div>
+                </div>
         </div>
         )
 

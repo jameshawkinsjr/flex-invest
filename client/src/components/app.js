@@ -20,10 +20,9 @@ const App = () => (
         </header>
         <main>
             <Switch>
-                <AuthRoute exact path='/' component={LandingPage}/>
+                <Route exact path='/' component={LandingPage}/>
                 <Route exact path="/info" component={ProjectionFormContainer}/>
                 <Route path="/chart" component={ChartContainer}/>
-                <ProtectedRoute exact path="/navbar" component={NavBarContainer}/>
             </Switch>
         </main>
         <footer>

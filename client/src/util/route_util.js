@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
 
-
-// FEEDBACK
-// Where do we want to reroute someone to if they're logged in?
-// For now, I'm going to call this /projection
-
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
     <Route 
         path={path} 
@@ -16,7 +11,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
             !loggedIn? (
                 <Component {...props} />
             ) : (
-                <Redirect to="/projection" />
+                <Redirect to="/chart" />
                 )
         )} 
     />
