@@ -1,4 +1,5 @@
 import React from 'react';
+import {Animated} from "react-animated-css";
 
 export class Form2 extends React.Component {
   constructor(props) {
@@ -81,6 +82,8 @@ export class Form2 extends React.Component {
           </div>
           <input className="form2-back" type="submit" value="back" onClick={this.props.decreaseFormState}/>
         </div>
+        
+        <Animated animationIn="bounceInRight" animationOut="rubberBand" isVisible={true}>
         <div className="form2-contribution">
           <label>
             Total contribution per year: 
@@ -100,6 +103,7 @@ export class Form2 extends React.Component {
             />
           </label>
         </div>
+        </Animated>
       </div>
       </>
     )
