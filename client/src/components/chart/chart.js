@@ -110,6 +110,7 @@ class Chart extends React.Component {
 
 
     render() {
+      document.title = "Projection | Flex Invest"
         const { opacity } = this.state;
         
         const formatter = new Intl.NumberFormat('en-US', {
