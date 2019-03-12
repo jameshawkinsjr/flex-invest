@@ -140,7 +140,7 @@ class Chart extends React.Component {
             <div className="chart-1 flex">
               <div className="chart-container flex-column">
                   <LineChart 
-                      width={500} height={300} data={this.state.chartData}
+                      width={500} height={400} data={this.state.chartData}
                       margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
                   >
                   <XAxis dataKey="name" />
@@ -188,6 +188,7 @@ class Chart extends React.Component {
               </div>
               <div>
                   <div className="chart-inputs">
+
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
                     Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
                     <br/>
