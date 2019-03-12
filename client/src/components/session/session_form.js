@@ -88,6 +88,7 @@ class SessionForm extends React.Component {
     
 
     render() {
+        const altButtonStyle = this.props.formType === 'login' ? {top: '320px'} : {top: '390px'}
 
         return (
             <>
@@ -99,7 +100,7 @@ class SessionForm extends React.Component {
                     <input type="text"
                     value={this.state.name}
                     onChange={this.handleUpdate('name')}
-                    placeholder="Name"
+                    placeholder="  Name"
                     />
                     ) : ( "" )
                     }
@@ -123,16 +124,16 @@ class SessionForm extends React.Component {
                     <img src="https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" alt="session" />
                 </div>
             </div>
-            <div className="alternate-buttons">
-                { this.props.formType === 'login' ?
+            <div className="alternate-buttons" style={altButtonStyle}>
+                { this.props.formType === 'signup' ?
                     <>
                         <span>Already a member?</span>
-                        <button onClick={this.props.openSignupModal}>Sign Up</button>
+                        <button onClick={this.props.openLoginModal}>Login</button>
                     </>
                     :
                     <>
-                        <span>New to ............</span>
-                        <button onClick={this.props.openLoginModal}>Login</button>
+                        <span>New to 💪Invest?</span>
+                        <button onClick={this.props.openSignupModal}>Sign Up</button>
                     </>
                 }
                 <span>{this.renderErrors()}</span>
