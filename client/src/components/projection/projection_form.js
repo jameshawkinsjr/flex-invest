@@ -88,6 +88,7 @@ class ProjectionForm extends React.Component {
   }
 
   render() {
+    document.title = "Info | Flex Invest"
     let form;
     switch(this.state.formState) {
       case 0:
