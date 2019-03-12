@@ -115,6 +115,7 @@ class ProjectionForm extends React.Component {
             updateNumber={this.updateNumber.bind(this)} 
             checkFormInput={this.checkForm2Input} 
             createProjection={this.props.createProjection}
+            history={this.props.history}
           /> )
         break;
       default:

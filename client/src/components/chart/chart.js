@@ -4,11 +4,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from '
 class Chart extends React.Component {
     constructor(props){
         super(props);
+        let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection
         this.state = {
-            yearToRetire: 2030,
-            income: 100000,
-            savingRate: 1.05,
-            employerMatch: 0.01,
+            yearToRetire,
+            income,
+            savingRate,
+            employerMatch,
+            currentSavings,
             today: Date.now(),
             opacity: {
                 savings: 1,
