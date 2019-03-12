@@ -17,7 +17,8 @@ export class Form1 extends React.Component {
   render() {
     let currentYear = new Date().getFullYear()
     return (
-      <>
+      <div className="backdrop"></div>
+      <div className="flex form1-wrapper">
         Tell us about yourself
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -89,7 +90,7 @@ export class Form1 extends React.Component {
           <br/>
           <input type="submit" value="next"/>
         </form>
-      </>
+      </div>
     )
   }
 }
