@@ -74,8 +74,15 @@
   font-size: 15px;
 }
 
-.form1-form input[type=submit]:hover {
+.form1-form input[type=submit]:hover, 
+.form2-form input[type=submit]:hover {
   cursor: pointer;
+  background: #3b3498;
+}
+
+.form2-back:hover {
+  cursor: pointer;
+  background: #5f74d3;
 }
 
 // Form 2
@@ -85,7 +92,6 @@
  width: 400px;
  border-radius: 5px;
  box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, .5);
- height: 600px;
  text-align: center;
 }
 
@@ -97,6 +103,28 @@
   font-weight: bold;
   width: 266px;
   height: 40px;
-  margin-top: 9px;
+  margin: 9px 0px 35px 0px;
   font-size: 15px;
+}
+
+.form2-contribution {
+  margin: 0px 0px 20px 30px;
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
+  border: 2px solid #4840bb;
+  text-align: center;
+}
+
+.form2-contribution input {
+  padding: 10px 0px 0px 0px;
+  font-size: 17px;
+  outline: none;
+  text-align: center;
+  border: none;
+  background: none;
+}
+
+.form2-form form label input {
+  text-align: center;
 }
