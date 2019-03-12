@@ -88,6 +88,12 @@ class SessionForm extends React.Component {
     
 
     render() {
+        const altButtonStyle1 = {
+            top: '320px',
+        };
+        const altButtonStyle2 = {
+            top: '390px',
+        };
 
         return (
             <>
@@ -123,7 +129,7 @@ class SessionForm extends React.Component {
                     <img src="https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" alt="session" />
                 </div>
             </div>
-            <div className="alternate-buttons">
+            <div className="alternate-buttons" style={altButtonStyle1}>
                 { this.props.formType === 'signup' ?
                     <>
                         <span>Already a member?</span>
