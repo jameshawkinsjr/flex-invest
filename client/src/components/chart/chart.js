@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, AreaChart, Area, LinearGradient} from 'recharts';
 
 class Chart extends React.Component {
     constructor(props){
@@ -20,6 +20,8 @@ class Chart extends React.Component {
                   savings3: 1,
               },
               chartData: [],
+              principalChartData: [],
+              pieChart: [],
             };
         } else {
           this.state = {
@@ -36,6 +38,8 @@ class Chart extends React.Component {
               savings3: 1,
             },
             chartData: [],
+            principalChartData: [],
+            pieChart: [],
           }
         }
         this.clearChart = this.clearChart.bind(this);
@@ -57,7 +61,7 @@ class Chart extends React.Component {
         let newPrincipal = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
         let contributionRemaining = contributionLeft-monthlyContribution;
         contributionRemaining = contributionRemaining < 0 ? 0 : contributionRemaining;
-        console.log(contributionRemaining)
+        console.log(contributionRemaining);
         return this.calculateYearReturn(newPrincipal, monthlyContribution, rateOfReturn, monthsLeft-1, contributionRemaining);
       }
     }
@@ -66,16 +70,26 @@ class Chart extends React.Component {
       let monthlyContribution = (this.state.income * this.state.savingRate / 12);
       let employerMatch = (this.state.income * this.state.employerMatch / 12);
       let chartData = [];
+      let principalChartData = [];
+      let pieChart = [];
       let principalWithoutMatch = parseInt(this.state.currentSavings);
       let principalWithMatch = parseInt(this.state.currentSavings);
       let principalWithoutContribution = parseInt(this.state.currentSavings);
+      let principalNoMarket = parseInt(this.state.currentSavings);
+      let principalWithMarket = parseInt(this.state.currentSavings);
       for ( let i = this.state.currentYear; i <= this.state.yearToRetire; i++ ) {
         principalWithoutMatch = this.calculateYearReturn( principalWithoutMatch, monthlyContribution, this.state.estimatedRateOfReturn, 12, 19000);
         principalWithoutContribution = this.calculateYearReturn( principalWithoutContribution, 0, this.state.estimatedRateOfReturn, 12, 19000);
         principalWithMatch = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12, 19000);
+        principalNoMarket = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12, 19000);
+        principalWithMarket = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), 0, 12, 19000);
         chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch), "line3": (principalWithoutContribution) } );
+        principalChartData.push( {  name: i, "line1": principalNoMarket, "line2": principalWithMarket} );
+        // pieChart = [{  "line1": (principalWithMarket*.07407407407)}, {  "line1": principalWithMarket/1.08}];
       }
       this.setState({ chartData: chartData});
+      this.setState({ principalChartData: principalChartData});
+      this.setState({ pieChart: pieChart});
     }
 
     clearChart() {
@@ -134,10 +148,24 @@ class Chart extends React.Component {
         
           return null;
         };
+        const CustomTooltip2 = ({ active, payload, label }) => {
+          if (active) {
+            return (
+              <div className="custom-tooltip">
+                <p className="label">{`Interest Earned : ${formatter.format(payload[0].value-payload[1].value)}`}</p>
+                <p className="label">{`Principal Investment : ${formatter.format(payload[1].value)}`}</p>
+
+              </div>
+            );
+          }
+        
+          return null;
+        };
 
         return (
-          <div className="chart-layout flex">
-            <div className="chart-container flex-column">
+          <div className="chart-layout flex-column">
+          <div>
+            <div className="chart-container flex">
                 <LineChart 
                     width={500} height={300} data={this.state.chartData}
                     margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
@@ -149,7 +177,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate with Employer Match"
                     dataKey="line2"
                     strokeOpacity={opacity.savings}
                     dot={false} 
@@ -162,7 +190,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate without Employer Match"
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
@@ -174,7 +202,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with no monthly contribution"
+                    name="Saving Rate with no monthly contributions"
                     dataKey="line3"
                     strokeOpacity={opacity.savings3}
                     dot={false}
@@ -184,7 +212,7 @@ class Chart extends React.Component {
                     stroke="#400000"
                   />
                 </LineChart>
-            </div>
+            
             <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
@@ -217,7 +245,63 @@ class Chart extends React.Component {
                     <br/>
                     {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
                   </div>
-                </div>
+              </div>
+            </div>
+            </div>
+            {/* <div>
+              <PieChart width={500} height={300}>
+                <Pie data={this.state.pieChart} dataKey="line1"  nameKey="line" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
+              </PieChart>
+            </div> */}
+            <div className="chart-container flex">
+            Balance Accumulation Graph
+            <AreaChart 
+                  width={500}
+                  height={300}
+                  data={this.state.principalChartData} 
+                  margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+            >
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                </linearGradient>
+                
+                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+                <XAxis dataKey="name" />
+                <YAxis tickFormatter={toDollars} />
+                <Tooltip content={<CustomTooltip2 />} />
+                <Area 
+                    legendType="square"
+                    type="monotone" 
+                    name="Interest Earned"
+                    dataKey="line1" 
+                    stroke="#82119e" 
+                    fill="#82119e" 
+                    animationBegin={0}
+                    animationDuration={500}
+                />
+                <Area 
+                    legendType="square"
+                    type="monotone" 
+                    name="Principal Investment"
+                    dataKey="line2" 
+                    stroke="#450953"
+                    fill="#450953" 
+                    animationBegin={0}
+                    animationDuration={500}
+                />
+
+
+
+                <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+            </AreaChart>
+
+            </div>
         </div>
         )
 
