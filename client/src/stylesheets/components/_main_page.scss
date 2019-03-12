@@ -13,11 +13,6 @@
 
 }
 
-.call-to-action {
-    padding: 40px;
-    color: $black;
-    // background: $green;
-}
 .hero-image {
     padding: 20px;
     text-align: center;
@@ -27,3 +22,32 @@
         margin: 50px;
     }
 }
+
+.call-to-action {
+    text-align:center;
+    opacity: 1;
+    padding: 15px 25px;
+    margin-top: 30px;
+    color: white;
+    font-weight: 500;
+    background: #1e88e5;
+    border-radius: 5px;
+    -webkit-animation: bounce .3s alternate;
+    -moz-animation: bounce .3s alternate;
+    animation: bounce .3s alternate;
+  }
+
+.call-to-action:hover {
+   background: #1879cd;
+}
+
+@-webkit-keyframes bounce {
+to { -webkit-transform: scale(1.5); }
+}
+@-moz-keyframes bounce {
+to { -moz-transform: scale(1.5); }
+}
+@keyframes bounce {
+to { transform: scale(1.5); }
+}
+
