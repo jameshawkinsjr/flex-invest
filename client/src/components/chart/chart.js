@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, AreaChart, Area, LinearGradient} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
 
 class Chart extends React.Component {
     constructor(props){

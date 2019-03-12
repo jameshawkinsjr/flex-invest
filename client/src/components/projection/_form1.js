@@ -37,7 +37,7 @@ export class Form1 extends React.Component {
               </label>
               <br/>
               <br/>
-              <span>I want to retire in 📅</span>
+              <span>I want to retire in <span role="img" aria-label="calendar-emoji">️📅</span></span>
               <br/>
               <select onChange = {this.props.updateNumber("yearToRetire")}>
                 <option value="0">Year</option>

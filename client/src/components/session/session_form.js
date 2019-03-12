@@ -132,7 +132,7 @@ class SessionForm extends React.Component {
                     </>
                     :
                     <>
-                        <span>New to 💪Invest?</span>
+                        <span>New to <span role="img" aria-label="flexing-emoji">️💪</span> Invest?</span>
                         <button onClick={this.props.openSignupModal}>Sign Up</button>
                     </>
                 }
