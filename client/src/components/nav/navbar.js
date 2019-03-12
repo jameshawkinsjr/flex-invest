@@ -47,7 +47,7 @@ class NavBar extends React.Component {
         <div className="navbar-container flex">
             <div className="navbar-logo">
                 <Link to={'/'}>
-                    <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="placeholder"></img>
+                    <div className="logo"> 💪 Invest 📈 </div>
                 </Link>
             </div>
             { this.getLinks() }
