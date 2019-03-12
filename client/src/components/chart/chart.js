@@ -4,22 +4,47 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from '
 class Chart extends React.Component {
     constructor(props){
         super(props);
-        // let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection
-        this.state = {
-            yearToRetire: 2030,
-            income: 100000,
-            savingRate: 0.08,
-            employerMatch: 0.06,
-            currentSavings: 10000,
-            estimatedRateOfReturn: 0.08,
-            currentYear: new Date().getFullYear(),
+        if (this.props.projection) {
+          let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection;
+          this.state = {
+              yearToRetire,
+              income,
+              savingRate,
+              employerMatch,
+              currentSavings,
+              estimatedRateOfReturn: 0.08,
+              currentYear: new Date().getFullYear(),
+              opacity: {
+                  savings: 1,
+                  savings2: 1,
+              },
+              chartData: [],
+            };
+        } else {
+          this.state = {
+              yearToRetire: (new Date().getFullYear() + 30),
+              income: 20000,
+              savingRate: .01,
+              employerMatch: 0,
+              currentSavings: 10000,
+              estimatedRateOfReturn: 0.08,
+              currentYear: new Date().getFullYear(),
             opacity: {
-                savings: 1,
-                savings2: 1,
+              savings: 1,
+              savings2: 1,
             },
             chartData: [],
-          };
-          this.clearChart = this.clearChart.bind(this);
+          }
+        }
+        this.clearChart = this.clearChart.bind(this);
+    }
+
+    componentDidMount() {
+      this.calculationFormula();
+      // if ( this.state.yearToRetire && this.state.income && this.state.savingRate && this.state.employerMatch && this.state.currentSavings){
+      // } else {
+      //   this.props.history.push("/info");
+      // }
     }
 
     calculateYearReturn(principal,monthlyContribution,rateOfReturn, monthsLeft){
@@ -76,10 +101,6 @@ class Chart extends React.Component {
       });
     }
 
-    componentDidMount() {
-      this.calculationFormula();
-    }
-
 
     render() {
         const { opacity } = this.state;
@@ -87,12 +108,11 @@ class Chart extends React.Component {
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'USD',
-          decimals: 0,
-        });
+        })
 
         const toDollars = function(input) {
           
-          return `${formatter.format(input)}`;
+          return `${formatter.format(input).replace(/\D00$/, '')}`;
         }
         const CustomTooltip = ({ active, payload, label }) => {
           if (active) {
@@ -175,7 +195,7 @@ class Chart extends React.Component {
                     <br/>
                     Current Savings ({ toDollars(Math.floor(this.state.currentSavings))}): 
                     <br/>
-                    {toDollars(0)} <input type="range" min={0} max={10000000} step="1" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
+                    {toDollars(0)} <input type="range" min={0} max={10000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
                   </div>
                 </div>
         </div>

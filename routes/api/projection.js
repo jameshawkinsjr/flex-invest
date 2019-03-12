@@ -8,8 +8,8 @@ const validateProjectionInput = require('../../validation/projection');
 
 
 // Get saved projection for a user
-router.get('/user/:user_id', (res, req) => {
-    Projection.find( {user: req.params.user_id})
+router.get('/user/:id', (res, req) => {
+    Projection.find( {user: req.params.id})
         .then(projection => res.json(projection))
         .catch(err => 
             res.status(404).json({ noprojectionfound: 'No projection found for this user'}
