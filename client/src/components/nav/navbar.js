@@ -22,12 +22,12 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="modal-buttons flex">
-                        <Link className="navbar-dropdown-link" to={'/chart'}>Your Projection</Link>
+                        <Link className="navbar-dropdown-link" to={'/chart'}>Your Projection 📊</Link>
                         {/*</div><div className="navbar-dropdown">
                             <button className="navbar-dropdown-button">Your account</button>
                             <div className="navbar-dropdown-content">
                                 <Link className="navbar-dropdown-link" to={'/profile'}>Your Profile</Link> */}
-                                <button className="navbar-dropdown-link" onClick={this.logoutCurrentUser}>Logout</button>
+                                <button className="navbar-dropdown-link" onClick={this.logoutCurrentUser}>Logout ❌</button>
                             {/* </div> */}
                         {/* </div> */}
                 </div>
@@ -35,8 +35,8 @@ class NavBar extends React.Component {
         } else {
             return (
                 <div className="flex modal-buttons">
-                    <button onClick={() => this.props.openModal('login')}>Login</button>
-                    <button onClick={() => this.props.openModal('signup')}>Signup</button>
+                    <button onClick={() => this.props.openModal('login')}>Login ✅</button>
+                    <button onClick={() => this.props.openModal('signup')}>Signup ⬆️</button>
                 </div>
             )
         }

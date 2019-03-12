@@ -21,7 +21,7 @@ export class Form1 extends React.Component {
       <div className="form1-parent">
         <div className="form1-container">
           <div className="form1-title">
-            Tell us about yourself
+            Tell us about yourself 
           </div>
           <div className="form1-form">
             <form onSubmit={this.handleSubmit}>
@@ -37,7 +37,7 @@ export class Form1 extends React.Component {
               </label>
               <br/>
               <br/>
-              <span>I want to retire in</span>
+              <span>I want to retire in 📅</span>
               <br/>
               <select onChange = {this.props.updateNumber("yearToRetire")}>
                 <option value="0">Year</option>
