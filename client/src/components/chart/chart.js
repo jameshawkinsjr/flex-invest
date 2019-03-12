@@ -137,55 +137,56 @@ class Chart extends React.Component {
 
         return (
           <div className="chart-layout flex">
-            <div className="chart-container flex-column">
-                <LineChart 
-                    width={500} height={300} data={this.state.chartData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
-                >
-                <XAxis dataKey="name" />
-                <YAxis tickFormatter={toDollars} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate with Match"
-                    dataKey="line2"
-                    strokeOpacity={opacity.savings}
-                    dot={false} 
-                    activeDot={{ r: 1 }} 
-                    animationBegin={0}
-                    animationDuration={500}
-                    stroke="#4840BA"
-                  />
-                {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate with Match"
-                    dataKey="line1"
-                    strokeOpacity={opacity.savings2}
-                    dot={false}
-                    animationBegin={0}
-                    animationDuration={500}
-                    activeDot={{ r: 1 }}
-                    stroke="#4483EF"
-                  />
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate with no monthly contribution"
-                    dataKey="line3"
-                    strokeOpacity={opacity.savings3}
-                    dot={false}
-                    animationBegin={0}
-                    animationDuration={500}
-                    activeDot={{ r: 1 }}
-                    stroke="#400000"
-                  />
-                </LineChart>
-            </div>
-            <div>
+            <div className="chart-1 flex">
+              <div className="chart-container flex-column">
+                  <LineChart 
+                      width={500} height={300} data={this.state.chartData}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+                  >
+                  <XAxis dataKey="name" />
+                  <YAxis tickFormatter={toDollars} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with Match"
+                      dataKey="line2"
+                      strokeOpacity={opacity.savings}
+                      dot={false} 
+                      activeDot={{ r: 1 }} 
+                      animationBegin={0}
+                      animationDuration={500}
+                      stroke="#4840BA"
+                    />
+                  {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with Match"
+                      dataKey="line1"
+                      strokeOpacity={opacity.savings2}
+                      dot={false}
+                      animationBegin={0}
+                      animationDuration={500}
+                      activeDot={{ r: 1 }}
+                      stroke="#4483EF"
+                    />
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with no monthly contribution"
+                      dataKey="line3"
+                      strokeOpacity={opacity.savings3}
+                      dot={false}
+                      animationBegin={0}
+                      animationDuration={500}
+                      activeDot={{ r: 1 }}
+                      stroke="#400000"
+                    />
+                  </LineChart>
+              </div>
+              <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
                     Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
@@ -218,7 +219,8 @@ class Chart extends React.Component {
                     {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
                   </div>
                 </div>
-        </div>
+            </div>
+          </div>
         )
 
       }

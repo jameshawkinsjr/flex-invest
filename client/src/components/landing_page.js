@@ -18,9 +18,9 @@ class LandingPage extends React.Component {
                     Welcome to 💪Invest
                 </h1>
                 <p> Visting our site might have been the smartest thing you've ever done.</p>
-                <AwesomeButton cssModule={AwesomeButtonStyles} type="primary">
+                {/* <AwesomeButton cssModule={AwesomeButtonStyles} type="primary"> */}
                     <Link className="call-to-action" to={'/info'}>Let's get started </Link>
-                </AwesomeButton>
+                {/* </AwesomeButton> */}
 
             </div>  
             </Animated>  
