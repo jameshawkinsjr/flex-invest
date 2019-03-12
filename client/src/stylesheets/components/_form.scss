@@ -1,3 +1,4 @@
+// Form 1
 .form1-parent, .form1-title, .form1-form {
   display: flex;
   justify-content: center;
@@ -5,6 +6,7 @@
 }
 
 .form1-container {
+  margin: 40px 0px 0px 0px;
   background: white;
   width: 400px;
   border-radius: 5px;
@@ -66,3 +68,6 @@
 //   margin: 10px 0px 30px 0px;
 //   background: none;
 // }
+
+
+// Form 2
