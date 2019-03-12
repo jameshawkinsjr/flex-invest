@@ -1,12 +1,25 @@
 // Form 1
-.form1-parent, .form1-title, .form1-form {
+.form1-parent,
+.form2-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Helvetica;
+}
+
+.form1-title, .form1-form, .form2-title {
   display: flex;
   justify-content: center;
   font-family: Helvetica;
 }
 
+.form1-parent, .form2-parent {
+  background: #f3f5f6;
+  height: 87vh;
+}
+
 .form1-container {
-  margin: 40px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
   background: white;
   width: 400px;
   border-radius: 5px;
@@ -14,13 +27,13 @@
   height: 400px;
 }
 
-.form1-title {
+.form1-title, .form2-title {
   font-size: 30px;
   padding: 10px;
   margin: 20px 20px;
 }
 
-.form1-form {
+.form1-form, .form2-form {
   text-align: center;
 }
 
@@ -30,7 +43,10 @@
 }
 
 .form1-form form label input,
-.form1-form form select {
+.form1-form form select,
+.form2-form form label input,
+.form2-form form select
+ {
   padding: 0px 0px 0px 15px;
   margin: 10px 5px 20px 5px;
   width: 260px;
@@ -45,8 +61,9 @@
   width: 277px;
 }
 
-.form1-form input[type=submit] {
-  background: #3c63dc;
+.form1-form input[type=submit],
+.form2-form input[type=submit] {
+  background: #4840bb;
   color: white;
   border: none;
   border-radius: 5px;
@@ -61,13 +78,25 @@
   cursor: pointer;
 }
 
-// .form1-form form select {
-//   width: 100px;
-//   height: 30px;
-//   padding-left: 50%;
-//   margin: 10px 0px 30px 0px;
-//   background: none;
-// }
-
-
 // Form 2
+.form2-container {
+ margin: 40px 0px 0px 0px;
+ background: white;
+ width: 400px;
+ border-radius: 5px;
+ box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, .5);
+ height: 600px;
+ text-align: center;
+}
+
+.form2-back {
+  background: #6B7FD7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 266px;
+  height: 40px;
+  margin-top: 9px;
+  font-size: 15px;
+}
