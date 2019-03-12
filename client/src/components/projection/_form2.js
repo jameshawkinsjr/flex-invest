@@ -83,12 +83,13 @@ export class Form2 extends React.Component {
         </div>
         <div className="form2-contribution">
           <label>
-            Total contribution
+            Total contribution per year:
             <br/>
             <input 
-              type="number"
+              type="text"
               min="0"
               max="19000"
+              readOnly="readonly"
               onChange = {this.props.updateNumber("totalContribution")}
               placeholder="Total Contribution"
               value={
