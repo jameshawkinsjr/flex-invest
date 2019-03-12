@@ -25,10 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         store = configureStore( {} );
     }
 
-    ///DELETE
-    // window.getState = store.getState();
-    ///DELETE
-
     const root = document.getElementById('root');
     ReactDOM.render( <Root store={store} />, root);
 })

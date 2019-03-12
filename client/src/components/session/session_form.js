@@ -23,25 +23,7 @@ class SessionForm extends React.Component {
         this.checkFormType();
     }
 
-    //DELETE NEED REVIEW
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.location.pathname !== prevProps.location.pathname){
-    //         this.checkFormType();
-    //     }
-    // }
-
     componentWillReceiveProps(nextProps) {
-    //     if (nextProps.currentUser) {
-    //         this.props.history.push('/projection');
-    // // FEEDBACK 
-    // // Unsure about this routing -- combined these forms together and I'm
-    // // not positive about how this is supposed to work.
-    // // Don't quite understand why we're pushing to login?
-    //     } 
-    //     else if (nextProps.signedIn === true) {
-    //         this.props.history.push('/projection');
-    //     }
-    //     this.setState({errors: nextProps.errors});
       this.setState({errors: nextProps.errors});
     }
 
@@ -52,15 +34,6 @@ class SessionForm extends React.Component {
             this.setState( {formType: "Signup"});
         }
     }
-    // checkFormType() {
-    //     if (this.props. === '/login'){
-    //         this.setState( {formType: "Login"});
-    //     } else if (this.props.location.pathname === '/signup'){
-    //         this.setState( {formType: "Signup"});
-    //     } else {
-    //         this.props.history.push('/login');
-    //     }
-    // }
 
     componentDidUpdate(prevProps) {
         if (this.props.formType!== prevProps.formType) {
@@ -69,10 +42,6 @@ class SessionForm extends React.Component {
         }
 
     }
-
-    // componentWillUnmount() {
-    //     this.props.clearErrors();
-    // }
 
     handleUpdate(field) {
         return e => this.setState({
@@ -98,7 +67,6 @@ class SessionForm extends React.Component {
         if (this.renderErrors === "") {
             this.props.closeModal();
         }
-        // this.props.closeModal();
             let user = {
                 email: this.state.email,
                 password: this.state.password,

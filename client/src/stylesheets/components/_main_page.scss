@@ -1,8 +1,32 @@
-body {
-    // background-color: $white;
+.hero-banner {
     background: url(https://images.unsplash.com/photo-1548708613-8bb2e529a01c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+}
+
+.call-to-action {
+    padding: 40px;
+    color: $black;
+    background: $green;
+}
+.hero-image {
+    padding: 20px;
+    text-align: center;
+    height: 400px;
+
+    p {
+        margin: 50px;
+    }
+}
+
+main {
 }
