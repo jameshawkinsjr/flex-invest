@@ -1,4 +1,5 @@
 import React from 'react';
+import {Animated} from "react-animated-css";
 
 export class Form2 extends React.Component {
   constructor(props) {
@@ -81,10 +82,13 @@ export class Form2 extends React.Component {
           </div>
           <input className="form2-back" type="submit" value="back" onClick={this.props.decreaseFormState}/>
         </div>
+        
+        <Animated animationIn="bounceInRight" animationOut="rubberBand" isVisible={true}>
         <div className="form2-contribution">
           <label>
-            Total contribution per year:
+            Total contribution per year: 
             <br/>
+            $
             <input 
               type="text"
               min="0"
@@ -94,11 +98,12 @@ export class Form2 extends React.Component {
               placeholder="Total Contribution"
               value={
                 ((this.props.state.savingRate / 100) * this.props.state.income) > 19000 ? 
-                19000 : (this.props.state.savingRate / 100) * this.props.state.income
+                19000 : ((this.props.state.savingRate / 100) * this.props.state.income).toFixed(2)
               }
             />
           </label>
         </div>
+        </Animated>
       </div>
       </>
     )
