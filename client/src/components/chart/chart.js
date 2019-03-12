@@ -4,12 +4,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from '
 class Chart extends React.Component {
     constructor(props){
         super(props);
+        let { yearToRetire, income, savingRate, employerMatch, currentSavings } = this.props.projection
         this.state = {
-            yearToRetire: 2300,
-            income: 100000,
-            savingRate: 0.05,
-            employerMatch: 0.01,
-            monthlyContribution: 500,
+            yearToRetire,
+            income,
+            savingRate,
+            employerMatch,
+            currentSavings,
             today: Date.now(),
             currentSavings: 10000,
             estimatedRateOfReturn: .08,
@@ -56,10 +57,10 @@ class Chart extends React.Component {
         });
       }
 
-    handleInput(field) {
-      return (e) => {
-          this.setState({ [field]: e.target.value });
-      };
+      handleInput(field) {
+        return (e) => {
+            this.setState({ [field]: e.currentTarget.value });
+        };
     }
     
     handleMouseLeave = (o) => {
@@ -166,7 +167,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate with Match - Line 2"
                     dataKey="line2"
                     strokeOpacity={opacity.savings}
                     dot={false} 
@@ -179,7 +180,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate with Match - Line 1"
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
@@ -193,11 +194,10 @@ class Chart extends React.Component {
             <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
-                    {/* Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/> */}
-                    Retirement Year: <input type="range" min={this.state.currentYear} max={this.state.currentYear + 70} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput('yearToRetire') }/>
-                    {/* Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("") }/> */}
-                    {/* Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("") }/> */}
-                    <button onClick={this.clearChart}> Clear Chart </button>
+                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("savingRate") }/>
+                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput("yearToRetire") }/>
+                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.income} className="slider" onChange={ this.handleInput("income") }/>
+                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/>
                   </div>
                 </div>
         </div>

@@ -120,7 +120,7 @@ class SessionForm extends React.Component {
                     </Animated>
                 </form>
                 <div className="session-img">
-                    <img src = "https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" />
+                    <img src="https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" alt="session" />
                 </div>
             </div>
             <div className="alternate-buttons">

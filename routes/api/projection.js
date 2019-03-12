@@ -47,7 +47,8 @@ router.post('/',
             yearToRetire: req.body.yearToRetire,
             income: req.body.income,
             savingRate: req.body.savingRate,
-            employerMatch: req.body.employerMatch 
+            employerMatch: req.body.employerMatch,
+            currentSavings: req.body.currentSavings
         });
 
         newProjection.save().then(projection => res.json(projection));
