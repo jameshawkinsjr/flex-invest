@@ -99,7 +99,7 @@ class SessionForm extends React.Component {
                     <input type="text"
                     value={this.state.name}
                     onChange={this.handleUpdate('name')}
-                    placeholder="Name"
+                    placeholder="  Name"
                     />
                     ) : ( "" )
                     }
@@ -127,12 +127,12 @@ class SessionForm extends React.Component {
                 { this.props.formType === 'signup' ?
                     <>
                         <span>Already a member?</span>
-                        <button onClick={this.props.openSignupModal}>Login</button>
+                        <button onClick={this.props.openLoginModal}>Login</button>
                     </>
                     :
                     <>
                         <span>New to 💪Invest?</span>
-                        <button onClick={this.props.openLoginModal}>Sign Up</button>
+                        <button onClick={this.props.openSignupModal}>Sign Up</button>
                     </>
                 }
                 <span>{this.renderErrors()}</span>
