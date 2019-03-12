@@ -57,7 +57,6 @@ class Chart extends React.Component {
         let newPrincipal = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
         let contributionRemaining = contributionLeft-monthlyContribution;
         contributionRemaining = contributionRemaining < 0 ? 0 : contributionRemaining;
-        console.log(contributionRemaining)
         return this.calculateYearReturn(newPrincipal, monthlyContribution, rateOfReturn, monthsLeft-1, contributionRemaining);
       }
     }
