@@ -4,7 +4,6 @@ import { saveProjection } from '../../actions/projection_actions';
 import ProjectionForm from './projection_form';
 
 const mapStateToProps = (state) => ({
-  user: state.session.user.id,
   name: "",
   yearToRetire: 0, 
   income: 0,

@@ -21,15 +21,15 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div className="navbar-links flex">
-                        <Link className="navbar-link" to={'/projection'}>Your Projection</Link>
-                        <div className="navbar-dropdown">
+                <div className="modal-buttons flex">
+                        <Link className="navbar-dropdown-link" to={'/chart'}>Your Projection</Link>
+                        {/*</div><div className="navbar-dropdown">
                             <button className="navbar-dropdown-button">Your account</button>
                             <div className="navbar-dropdown-content">
-                                <Link className="navbar-dropdown-link" to={'/profile'}>Your Profile</Link>
+                                <Link className="navbar-dropdown-link" to={'/profile'}>Your Profile</Link> */}
                                 <button className="navbar-dropdown-link" onClick={this.logoutCurrentUser}>Logout</button>
-                            </div>
-                        </div>
+                            {/* </div> */}
+                        {/* </div> */}
                 </div>
             );
         } else {
@@ -47,7 +47,7 @@ class NavBar extends React.Component {
         <div className="navbar-container flex">
             <div className="navbar-logo">
                 <Link to={'/'}>
-                    <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" alt="placeholder"></img>
+                    <div className="logo"> 💪 Invest 📈 </div>
                 </Link>
             </div>
             { this.getLinks() }
