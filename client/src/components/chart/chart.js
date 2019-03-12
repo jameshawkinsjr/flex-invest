@@ -72,7 +72,8 @@ class Chart extends React.Component {
         principalWithoutMatch = this.calculateYearReturn( principalWithoutMatch, monthlyContribution, this.state.estimatedRateOfReturn, 12, 19000);
         principalWithoutContribution = this.calculateYearReturn( principalWithoutContribution, 0, this.state.estimatedRateOfReturn, 12, 19000);
         principalWithMatch = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12, 19000);
-        chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch), "line3": (principalWithoutContribution) } );
+        // chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch), "line3": (principalWithoutContribution) } );
+        chartData = [...chartData, {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch), "line3": (principalWithoutContribution) }];
       }
       this.setState({ chartData: chartData});
     }
@@ -90,13 +91,21 @@ class Chart extends React.Component {
         });
       }
 
-      handleInput(field) {
+      handleNum(field) {
         return (e) => {
-          this.setState({ [field]: e.currentTarget.value });
-          this.calculationFormula();
+          this.setState({ [field]: parseInt(e.currentTarget.value) }, () => {
+            this.calculationFormula();
+          });
         };
-
-    }
+      }
+      
+      handleFloat(field) {
+        return (e) => {
+          this.setState({ [field]: parseFloat(e.currentTarget.value) }, () => {
+            this.calculationFormula();
+          });
+        };
+      }
     
     handleMouseLeave = (o) => {
       const { dataKey } = o;
@@ -162,7 +171,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match"
+                    name="Saving Rate without Match"
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
@@ -190,32 +199,32 @@ class Chart extends React.Component {
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
                     Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
                     <br/>
-                    1% <input type="range" min={0.01} max={1} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("savingRate") }/> 100%
+                    1% <input type="range" min={0.01} max={1} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleFloat("savingRate") }/> 100%
                     <br/>
                     <br/>
                     Retirement Year ({Math.floor(this.state.yearToRetire)}): 
                     <br/>
-                    {this.state.currentYear} <input type="range" min={this.state.currentYear} max={this.state.currentYear + 60} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput("yearToRetire") }/> {this.state.currentYear + 60}
+                    {this.state.currentYear} <input type="range" min={this.state.currentYear} max={this.state.currentYear + 60} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleNum("yearToRetire") }/> {this.state.currentYear + 60}
                     <br/>
                     <br/>
                     Annual Income ({toDollars(Math.floor(this.state.income))}):
                     <br/>
-                    {toDollars(0)}<input type="range" min={0} max={1000000} step="10000" value={this.state.income} className="slider" onChange={ this.handleInput("income") }/>{toDollars(1000000)}
+                    {toDollars(0)}<input type="range" min={0} max={1000000} step="10000" value={this.state.income} className="slider" onChange={ this.handleNum("income") }/>{toDollars(1000000)}
                     <br/>
                     <br/>
                     Employer Match ({Math.floor(this.state.employerMatch*100)}%): 
                     <br/>
-                    0% <input type="range" min={.0} max={.15} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/> 15%
+                    0% <input type="range" min={.0} max={.15} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleFloat("employerMatch") }/> 15%
                     <br/>
                     <br/>
                     Estimated Yearly Market Return ({Math.floor(this.state.estimatedRateOfReturn*100)}%): 
                     <br/>
-                    0% <input type="range" min={0.00} max={.5} step=".01" value={this.state.estimatedRateOfReturn} className="slider" onChange={ this.handleInput("estimatedRateOfReturn") }/> 50%
+                    0% <input type="range" min={0.00} max={.5} step=".01" value={this.state.estimatedRateOfReturn} className="slider" onChange={ this.handleFloat("estimatedRateOfReturn") }/> 50%
                     <br/>
                     <br/>
                     Current Savings ({ toDollars(Math.floor(this.state.currentSavings))}): 
                     <br/>
-                    {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
+                    {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleNum("currentSavings") }/> {toDollars(1000000)}
                   </div>
                 </div>
         </div>
