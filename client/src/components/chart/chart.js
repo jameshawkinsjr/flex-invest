@@ -29,9 +29,9 @@ class Chart extends React.Component {
         });
       }
 
-      handleInput() {
+      handleInput(field) {
         return (e) => {
-            this.setState({ savingRate: e.target.value });
+            this.setState({ [field]: e.currentTarget.value });
         };
     }
     
@@ -161,10 +161,10 @@ class Chart extends React.Component {
             <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
-                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("savingRate") }/>
+                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput("yearToRetire") }/>
+                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.income} className="slider" onChange={ this.handleInput("income") }/>
+                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/>
                   </div>
                 </div>
         </div>
