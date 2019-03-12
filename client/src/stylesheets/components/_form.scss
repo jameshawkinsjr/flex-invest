@@ -14,13 +14,15 @@
 }
 
 .form1-parent, .form2-parent {
-  background: #f3f5f6;
+  background: url(https://images.unsplash.com/photo-1548708613-8bb2e529a01c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) no-repeat center center fixed;
+  // background: #f3f5f6;
   height: 87vh;
 }
 
 .form1-container {
   margin: 0px 0px 0px 0px;
-  background: white;
+  background: mintcream;
+  opacity: 0.8;
   width: 400px;
   border-radius: 5px;
   box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, .5);
