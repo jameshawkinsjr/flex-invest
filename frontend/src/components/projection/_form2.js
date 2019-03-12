@@ -10,12 +10,11 @@ export class Form2 extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     if (!this.props.checkFormInput()) {
-      this.props.createProjection(this.props.state);
+      this.props.createProjection(this.props.state).then( (res) => this.props.history.push("/chart"));
     };
   }
 
   render() {
-    console.log(this.props.state)
     return (
       <>
         Let's get personal
