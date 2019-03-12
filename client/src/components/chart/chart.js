@@ -17,6 +17,7 @@ class Chart extends React.Component {
               opacity: {
                   savings: 1,
                   savings2: 1,
+                  savings3: 1,
               },
               chartData: [],
             };
@@ -32,6 +33,7 @@ class Chart extends React.Component {
             opacity: {
               savings: 1,
               savings2: 1,
+              savings3: 1,
             },
             chartData: [],
           }
@@ -47,13 +49,16 @@ class Chart extends React.Component {
       // }
     }
 
-    calculateYearReturn(principal,monthlyContribution,rateOfReturn, monthsLeft){
+    calculateYearReturn(principal,monthlyContribution,rateOfReturn, monthsLeft, contributionLeft){
       if (monthsLeft === 1){
         let total = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
         return total;
       } else {
         let newPrincipal = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
-        return this.calculateYearReturn(newPrincipal, monthlyContribution, rateOfReturn, monthsLeft-1);
+        let contributionRemaining = contributionLeft-monthlyContribution;
+        contributionRemaining = contributionRemaining < 0 ? 0 : contributionRemaining;
+        console.log(contributionRemaining)
+        return this.calculateYearReturn(newPrincipal, monthlyContribution, rateOfReturn, monthsLeft-1, contributionRemaining);
       }
     }
 
@@ -61,12 +66,14 @@ class Chart extends React.Component {
       let monthlyContribution = (this.state.income * this.state.savingRate / 12);
       let employerMatch = (this.state.income * this.state.employerMatch / 12);
       let chartData = [];
-      let principalWithoutMatch = this.state.currentSavings;
-      let principalWithMatch = this.state.currentSavings;
+      let principalWithoutMatch = parseInt(this.state.currentSavings);
+      let principalWithMatch = parseInt(this.state.currentSavings);
+      let principalWithoutContribution = parseInt(this.state.currentSavings);
       for ( let i = this.state.currentYear; i <= this.state.yearToRetire; i++ ) {
-        principalWithoutMatch = this.calculateYearReturn( principalWithoutMatch, monthlyContribution, this.state.estimatedRateOfReturn, 12);
-        principalWithMatch = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12);
-        chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch) } );
+        principalWithoutMatch = this.calculateYearReturn( principalWithoutMatch, monthlyContribution, this.state.estimatedRateOfReturn, 12, 19000);
+        principalWithoutContribution = this.calculateYearReturn( principalWithoutContribution, 0, this.state.estimatedRateOfReturn, 12, 19000);
+        principalWithMatch = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), this.state.estimatedRateOfReturn, 12, 19000);
+        chartData.push( {  name: i, "line1": principalWithoutMatch, "line2": (principalWithMatch), "line3": (principalWithoutContribution) } );
       }
       this.setState({ chartData: chartData});
     }
@@ -86,8 +93,8 @@ class Chart extends React.Component {
 
       handleInput(field) {
         return (e) => {
-            this.setState({ [field]: e.target.value });
-            this.calculationFormula();
+          this.setState({ [field]: e.currentTarget.value });
+          this.calculationFormula();
         };
 
     }
@@ -120,6 +127,7 @@ class Chart extends React.Component {
               <div className="custom-tooltip">
                 <p className="label">{`With Match : ${formatter.format(payload[0].value)}`}</p>
                 <p className="label">{`Without Match : ${formatter.format(payload[1].value)}`}</p>
+                <p className="label">{`Without no monthly contribution : ${formatter.format(payload[2].value)}`}</p>
               </div>
             );
           }
@@ -141,7 +149,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match - Line 2"
+                    name="Saving Rate with Match"
                     dataKey="line2"
                     strokeOpacity={opacity.savings}
                     dot={false} 
@@ -154,7 +162,7 @@ class Chart extends React.Component {
                 <Line 
                     legendType="square"
                     type="monotone"
-                    name="Saving Rate with Match - Line 1"
+                    name="Saving Rate with Match"
                     dataKey="line1"
                     strokeOpacity={opacity.savings2}
                     dot={false}
@@ -162,6 +170,18 @@ class Chart extends React.Component {
                     animationDuration={500}
                     activeDot={{ r: 1 }}
                     stroke="#4483EF"
+                  />
+                <Line 
+                    legendType="square"
+                    type="monotone"
+                    name="Saving Rate with no monthly contribution"
+                    dataKey="line3"
+                    strokeOpacity={opacity.savings3}
+                    dot={false}
+                    animationBegin={0}
+                    animationDuration={500}
+                    activeDot={{ r: 1 }}
+                    stroke="#400000"
                   />
                 </LineChart>
             </div>
@@ -185,7 +205,7 @@ class Chart extends React.Component {
                     <br/>
                     Employer Match ({Math.floor(this.state.employerMatch*100)}%): 
                     <br/>
-                    0% <input type="range" min={.0} max={.1} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/> 100%
+                    0% <input type="range" min={.0} max={.15} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleInput("employerMatch") }/> 15%
                     <br/>
                     <br/>
                     Estimated Yearly Market Return ({Math.floor(this.state.estimatedRateOfReturn*100)}%): 
@@ -195,7 +215,7 @@ class Chart extends React.Component {
                     <br/>
                     Current Savings ({ toDollars(Math.floor(this.state.currentSavings))}): 
                     <br/>
-                    {toDollars(0)} <input type="range" min={0} max={10000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
+                    {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleInput("currentSavings") }/> {toDollars(1000000)}
                   </div>
                 </div>
         </div>
