@@ -17,7 +17,11 @@ export class Form2 extends React.Component {
   render() {
     return (
       <>
-        Let's get personal
+      <div className="form2-container">
+        <div className="form2-title">
+          Let's get personal
+        </div>
+        <div className="form2-form">
         <form onSubmit={this.handleSubmit}>
          <label>
             My current savings is
@@ -71,8 +75,9 @@ export class Form2 extends React.Component {
           <br/>
           <input type="submit" value="submit"/>
         </form>
+        </div>
         <input type="submit" value="back" onClick={this.props.decreaseFormState}/>
-
+      </div>
       </>
     )
   }
