@@ -6,13 +6,15 @@ class ProjectionForm extends React.Component {
   constructor(props) {
     super(props);
 
-    let { name, yearToRetire, income, savingRate, employerMatch } = this.props
+    let { name, yearToRetire, income, savingRate, employerMatch, currentSavings, user } = this.props
     this.state = {
+      user,
       name, 
       yearToRetire, 
       income, 
       savingRate, 
       employerMatch, 
+      currentSavings,
       formState: 0,
       errors: {}
     }
@@ -38,9 +40,23 @@ class ProjectionForm extends React.Component {
   }
 
   checkForm1Input(e) {
-     if (this.state.name === "" || this.state.yearToRetire === "") {
-       console.log("ERROR")
+     if (this.state.name === "") {
+       alert("Name cannot be blank!")
+       return true;
+     } else if (this.state.yearToRetire === 0) {
+       alert("Please enter a year!")
+       return true;
      }
+  }
+
+  checkForm2Input(e) {
+    if (this.state.income === 0) {
+      alert("Income must be greater than 0!")
+      return true;
+    } else if (this.state.savingRate === 0) {
+      alert("Saving rate can't be blank!")
+      return true;
+    };
   }
 
   update(field) {
@@ -53,16 +69,16 @@ class ProjectionForm extends React.Component {
 
   updateNumber(field) {
     return (e) => {
-      console.log(parseInt(e.currentTarget.value));
+      console.log(parseFloat(e.currentTarget.value));
       this.setState({
-        [field]: parseInt(e.currentTarget.value)
+        [field]: parseFloat(e.currentTarget.value)
       })
     }
   }
 
   renderProjectionErrors() {
     return (
-      <ul>
+      <ul> 
         {Object.values(this.state.errors).map( (error, i) => (
           <li key={`error-${i}`}>
             {this.state.errors[error]}

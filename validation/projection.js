@@ -5,7 +5,7 @@ const validNum = require('./valid-num');
 module.exports = function validateProjectionInput(data) {
     let errors = {};
 
-    data.yearToRetire = validText(data.yearToRetire) ? data.yearToRetire : '';
+    data.yearToRetire = validNum(data.yearToRetire) ? data.yearToRetire : '';
     data.income = validNum(data.income) ? data.income : '';
     data.savingRate = validNum(data.savingRate) ? data.savingRate : '';
     data.employerMatch = validNum(data.employerMatch) ? data.employerMatch : '';

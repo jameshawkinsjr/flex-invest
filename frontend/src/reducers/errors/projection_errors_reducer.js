@@ -1,8 +1,8 @@
-import { RECEIVE_CURRENT_PROJECTION, RECEIVE_PROJECTION_ERRORS } from '../../actions/projections_actions';
+import { RECEIVE_CURRENT_PROJECTION, RECEIVE_PROJECTION_ERRORS } from '../../actions/projection_actions';
 
 const _nullErrors = [];
 
-const ProjectionsErrorsReducer = (state = _nullErrors, action) => {
+const ProjectionErrorsReducer = (state = _nullErrors, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_PROJECTION_ERRORS:
@@ -14,4 +14,4 @@ const ProjectionsErrorsReducer = (state = _nullErrors, action) => {
     }
 };
 
-export default ProjectionsErrorsReducer;
+export default ProjectionErrorsReducer;

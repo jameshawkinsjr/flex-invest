@@ -1,0 +1,21 @@
+.chart-container {
+    align-items: center;
+    font-family: $font-sans-serif;
+}
+
+.recharts-surface {
+}
+.recharts-wrapper {
+    font-size: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background: rgba(248, 248, 248, 0.623);
+    box-shadow: 1px 1px 1px #4b4b4b;
+
+}
+
+.recharts-tooltip-wrapper {
+    font-size: 10px;
+    background: $white;
+    padding: 10px;
+}
