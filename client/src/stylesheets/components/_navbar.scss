@@ -1,12 +1,10 @@
 .navbar-container {
     font-family: $font-sans-serif;
-    // background: $blue;
+    background: $dark-purple;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    // border-bottom: 2px solid $light-grey;
-    // box-shadow: 0 1px 1px #888888;
 
     .navbar-link {
         font-size: 14px;
@@ -15,6 +13,12 @@
     }
 
     .navbar-logo {
+        .logo {
+            padding: 20px;
+            font-family: $logo-font;
+            text-decoration: none;
+            color: $white;
+        }
         img {
             width: 150px;
             &:hover {
@@ -25,7 +29,7 @@
 
     .navbar-dropdown-button {
         background: none;
-        color: $black;
+        color: $white;
         padding: 16px;
         border: none;
     }
@@ -33,7 +37,7 @@
     .navbar-links {
         a {
             font-size: 14px;
-            color: black;
+            color: $white;
             padding: 12px 16px;
             text-decoration: none;
         }
@@ -43,7 +47,7 @@
     .modal-buttons > button {
         background: none;
         font-size: 14px;
-        color: black;
+        color: $white;
         padding: 12px 16px;
         text-decoration: none;
 
@@ -67,11 +71,12 @@
         z-index: 1;
     }
     
-    .navbar-dropdown-content .navbar-dropdown-link {
+    .navbar-dropdown-content, .navbar-dropdown-link {
         font-size: 14px;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        color: white;
         cursor: pointer;
     }
     
@@ -84,14 +89,19 @@
     }
 
     .navbar-button {
+        cursor: pointer;
         font-size: 13px;
         font-weight: 700;
         padding: 8px;
-        // background: $med-blue;
-        color: $black;
+        color: $white;
         border-radius: 5px;
         text-decoration: none;
         margin: 10px;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
         
         &:hover {
             // background: $dark-blue;
@@ -99,5 +109,24 @@
         }
     }   
 }
+
+.call-to-action {
+    text-align:center;
+    opacity: 1;
+    border-radius: 5px;
+    -webkit-animation: bounce .3s alternate;
+    -moz-animation: bounce .3s alternate;
+    animation: bounce .3s alternate;
+  }
+  @-webkit-keyframes bounce {
+    to { -webkit-transform: scale(1.5); }
+  }
+  @-moz-keyframes bounce {
+    to { -moz-transform: scale(1.5); }
+  }
+  @keyframes bounce {
+    to { transform: scale(1.5); }
+  }
+
 
 

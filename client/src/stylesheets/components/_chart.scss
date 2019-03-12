@@ -1,6 +1,12 @@
 .chart-container {
     align-items: center;
     font-family: $font-sans-serif;
+    padding: 30px;
+}
+
+.chart-layout {
+    border-top: 1px solid rgba(248, 248, 248, 0.623);;
+    background: #e9e9e9;
 }
 
 .recharts-surface {
@@ -18,4 +24,9 @@
     font-size: 10px;
     background: $white;
     padding: 10px;
+}
+
+.chart-inputs {
+    padding: 20px;
+    width: auto;
 }
