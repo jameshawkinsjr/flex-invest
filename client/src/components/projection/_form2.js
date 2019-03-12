@@ -52,7 +52,7 @@ export class Form2 extends React.Component {
             <br/>
             <input 
               type="number"
-              step="0.01" 
+              step="0.001" 
               min="0"
               onChange = {this.props.updateNumber("savingRate")}
               placeholder="Saving Rate"
@@ -67,6 +67,7 @@ export class Form2 extends React.Component {
             <input 
               type="number"
               min="0" 
+              step="0.001"
               onChange = {this.props.updateNumber("employerMatch")}
               placeholder="Employer Match"
               value={this.props.state.employerMatch}

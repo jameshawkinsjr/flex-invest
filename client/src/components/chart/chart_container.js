@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Chart from './chart';
 
 const mapStateToProps = (state, ownProps) => ({
-    projection: state.entities.projection,
+    projection: state.entities.projection.data
 });
 
 const mapDispatchToProps = dispatch => ({
