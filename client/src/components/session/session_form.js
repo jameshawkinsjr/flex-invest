@@ -131,7 +131,7 @@ class SessionForm extends React.Component {
                     </>
                     :
                     <>
-                        <span>New to ............</span>
+                        <span>New to 💪Invest?</span>
                         <button onClick={this.props.openLoginModal}>Login</button>
                     </>
                 }
