@@ -110,23 +110,4 @@
     }   
 }
 
-.call-to-action {
-    text-align:center;
-    opacity: 1;
-    border-radius: 5px;
-    -webkit-animation: bounce .3s alternate;
-    -moz-animation: bounce .3s alternate;
-    animation: bounce .3s alternate;
-  }
-  @-webkit-keyframes bounce {
-    to { -webkit-transform: scale(1.5); }
-  }
-  @-moz-keyframes bounce {
-    to { -moz-transform: scale(1.5); }
-  }
-  @keyframes bounce {
-    to { transform: scale(1.5); }
-  }
-
-
 
