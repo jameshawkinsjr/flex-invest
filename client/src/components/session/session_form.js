@@ -1,6 +1,6 @@
 import React from 'react';
 import {Animated} from "react-animated-css";
-import "react-awesome-button/dist/styles.css";
+import 'react-awesome-button/dist/styles.css';
 
 class SessionForm extends React.Component {
     constructor(props){
