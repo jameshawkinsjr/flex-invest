@@ -83,8 +83,9 @@ export class Form2 extends React.Component {
         </div>
         <div className="form2-contribution">
           <label>
-            Total contribution per year:
+            Total contribution per year: 
             <br/>
+            $
             <input 
               type="text"
               min="0"
@@ -94,7 +95,7 @@ export class Form2 extends React.Component {
               placeholder="Total Contribution"
               value={
                 ((this.props.state.savingRate / 100) * this.props.state.income) > 19000 ? 
-                19000 : (this.props.state.savingRate / 100) * this.props.state.income
+                19000 : ((this.props.state.savingRate / 100) * this.props.state.income).toFixed(2)
               }
             />
           </label>
