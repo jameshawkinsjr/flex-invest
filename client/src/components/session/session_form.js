@@ -53,13 +53,25 @@ class SessionForm extends React.Component {
         }
     }
     // checkFormType() {
-    //     if (this.props.location.pathname === '/login'){
+    //     if (this.props. === '/login'){
     //         this.setState( {formType: "Login"});
     //     } else if (this.props.location.pathname === '/signup'){
     //         this.setState( {formType: "Signup"});
     //     } else {
     //         this.props.history.push('/login');
     //     }
+    // }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.formType!== prevProps.formType) {
+            this.checkFormType();
+            this.props.clearErrors();
+        }
+
+    }
+
+    // componentWillUnmount() {
+    //     this.props.clearErrors();
     // }
 
     handleUpdate(field) {
@@ -70,6 +82,9 @@ class SessionForm extends React.Component {
 
     handleSignup(e) {
         e.preventDefault();
+        if (this.renderErrors === "") {
+            this.props.closeModal(); 
+        }
         let user = {
                 name: this.state.name,
                 email: this.state.email,
@@ -80,6 +95,10 @@ class SessionForm extends React.Component {
 
     handleLogin(e) {
         e.preventDefault();
+        if (this.renderErrors === "") {
+            this.props.closeModal();
+        }
+        // this.props.closeModal();
             let user = {
                 email: this.state.email,
                 password: this.state.password,
@@ -103,37 +122,54 @@ class SessionForm extends React.Component {
     render() {
 
         return (
-          <div className="session-form-container flex">
-            <form className="flex" onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
-              <Animated animationIn="slideInLeft" animationInDelay="5s" animationOut="rubberBand" isVisible={true}>
-              <div className="session-form flex">
-                { this.state.formType === "Signup" ? (
-                  <input type="text"
-                  value={this.state.name}
-                  onChange={this.handleUpdate('name')}
-                  placeholder="Name"
-                  />
-                  ) : ( "" )
-                }
-                  <input type="text"
-                    value={this.state.email}
-                    onChange={this.handleUpdate('email')}
-                    placeholder="  Email"
-                  />
-                  <input type=" password"
-                    value={this.state.password}
-                    onChange={this.handleUpdate('password')}
-                    placeholder="  Password"
-                  />
-                  <input type="submit" value="Submit" />
-                  <span>{this.renderErrors()}</span>
-              </div>
-                  </Animated>
-            </form>
-            <div className="session-img">
-                    < img src = "https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" />
+            <>
+            <div className="session-form-container flex">
+                <form className="flex" onSubmit={ this.state.formType === "Signup" ? this.handleSignup : this.handleLogin }>
+                <Animated animationIn="bounceInLeft" animationOut="rubberBand" isVisible={true}>
+                <div className="session-form flex">
+                    { this.state.formType === "Signup" ? (
+                    <input type="text"
+                    value={this.state.name}
+                    onChange={this.handleUpdate('name')}
+                    placeholder="Name"
+                    />
+                    ) : ( "" )
+                    }
+                    <input type="text"
+                        value={this.state.email}
+                        onChange={this.handleUpdate('email')}
+                        placeholder="  Email"
+                    />
+                    <input type=" password"
+                        value={this.state.password}
+                        onChange={this.handleUpdate('password')}
+                        placeholder="  Password"
+                    />
+                    <input className="input-submit" type="submit" value="Submit" />
+                    {/* <button onClick={() => this.props.openModal('login')}>Login</button> */}
+
+                </div>
+                    </Animated>
+                </form>
+                <div className="session-img">
+                    <img src = "https://media.giphy.com/media/RLxLgDyVSxs9G/giphy.gif" />
+                </div>
             </div>
-          </div>
+            <div className="alternate-buttons">
+                { this.props.formType === 'login' ?
+                    <>
+                        <span>Already a member?</span>
+                        <button onClick={this.props.openSignupModal}>Sign Up</button>
+                    </>
+                    :
+                    <>
+                        <span>New to ............</span>
+                        <button onClick={this.props.openLoginModal}>Login</button>
+                    </>
+                }
+                <span>{this.renderErrors()}</span>
+            </div>
+            </>
         );
       }
 
