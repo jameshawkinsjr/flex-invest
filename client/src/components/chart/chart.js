@@ -5,18 +5,47 @@ class Chart extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            yearToRetire: 2030,
+            yearToRetire: 2300,
             income: 100000,
-            savingRate: 1.05,
+            savingRate: 0.05,
             employerMatch: 0.01,
+            monthlyContribution: 500,
             today: Date.now(),
+            currentSavings: 10000,
+            estimatedRateOfReturn: .08,
+            currentYear: new Date().getFullYear(),
             opacity: {
                 savings: 1,
                 savings2: 1,
-              },
+            },
+            chartData: [],
           };
+          this.clearChart = this.clearChart.bind(this);
     }
-    
+
+    calculateYearReturn(principal,monthlyContribution,rateOfReturn, monthsLeft){
+      if (monthsLeft === 1){
+        let total = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
+        return total;
+      } else {
+        let newPrincipal = (principal + (principal * rateOfReturn/12) + monthlyContribution + (monthlyContribution * rateOfReturn/12));
+        return this.calculateYearReturn(newPrincipal, monthlyContribution, rateOfReturn, monthsLeft-1);
+      }
+    }
+
+    calculationFormula() {
+      let chartData = [];
+      let currentPrincipal = this.state.currentSavings;
+      for ( let i = this.state.currentYear; i <= this.state.yearToRetire; i++ ) {
+        currentPrincipal = this.calculateYearReturn( currentPrincipal, this.state.monthlyContribution, this.state.estimatedRateOfReturn, 12);
+        chartData.push( {  name: i, "line1": currentPrincipal, "line2": (currentPrincipal) } );
+      }
+      this.setState({ chartData: chartData});
+    }
+
+    clearChart() {
+      this.setState( { chartData: [] } );
+    }
 
     handleMouseEnter = (o) => {
         const { dataKey } = o;
@@ -27,21 +56,27 @@ class Chart extends React.Component {
         });
       }
 
-      handleInput() {
-        return (e) => {
-            this.setState({ savingRate: e.target.value });
-        };
+    handleInput(field) {
+      return (e) => {
+          this.setState({ [field]: e.target.value });
+      };
     }
     
-      handleMouseLeave = (o) => {
-        const { dataKey } = o;
-        const { opacity } = this.state;
-    
-        this.setState({
-          opacity: { ...opacity, [dataKey]: 1 },
-        });
-      }
+    handleMouseLeave = (o) => {
+      const { dataKey } = o;
+      const { opacity } = this.state;
+  
+      this.setState({
+        opacity: { ...opacity, [dataKey]: 1 },
+      });
+    }
 
+    // componentWillUpdate(prevProps) {
+    //   debugger
+    // }
+    componentDidMount() {
+      this.calculationFormula();
+    }
       
 
 
@@ -73,7 +108,7 @@ class Chart extends React.Component {
 
         const toDollars = function(input) {
           
-          return `${formatter.format(input/1000)}`;
+          return `${formatter.format(input)}`;
         }
         const CustomTooltip = ({ active, payload, label }) => {
           if (active) {
@@ -117,12 +152,11 @@ class Chart extends React.Component {
             { name : '2042' ,  "line1" : 12000000, "line2" : (28000000 ** (this.state.savingRate)) } , 
             { name : '2043' ,  "line1" : 12000000, "line2" : (36000000 ** (this.state.savingRate)) } , 
         ]
-
         return (
           <div className="chart-layout flex">
             <div className="chart-container flex-column">
                 <LineChart 
-                    width={500} height={300} data={data}
+                    width={500} height={300} data={this.state.chartData}
                     margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
                 >
                 <XAxis dataKey="name" />
@@ -159,10 +193,11 @@ class Chart extends React.Component {
             <div>
                   <div className="chart-inputs">
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
-                    Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Retirement Year: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
-                    Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/>
+                    {/* Saving Rate: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput() }/> */}
+                    Retirement Year: <input type="range" min={this.state.currentYear} max={this.state.currentYear + 70} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleInput('yearToRetire') }/>
+                    {/* Income: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("") }/> */}
+                    {/* Employer Match: <input type="range" min={1.01} max={1.09} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleInput("") }/> */}
+                    <button onClick={this.clearChart}> Clear Chart </button>
                   </div>
                 </div>
         </div>
