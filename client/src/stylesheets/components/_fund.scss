@@ -1,0 +1,69 @@
+table, th, td {
+  border: 1px solid $black;
+  text-align: center;
+  vertical-align: middle;
+  font-family: $font-sans-serif;
+}
+
+th {
+  font-weight: 700;
+  font-size: 12px;
+}
+table {
+  width: 60%;
+}
+
+.fund-page-header {
+  padding: 50px;
+  text-align: center;
+  h2 {
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+
+tr {
+  height: 40px;
+  font-size: 14px;
+}
+
+td {
+  padding: 10px;
+}
+
+.fund-item {
+  .positive {
+    font-weight: 700;
+    color: green;
+    font-family: $font-lato
+  }
+
+  .negative {
+    font-weight: 700;
+    color: red;
+    font-family: $font-lato
+  }
+}
+.fund-page-search-container {
+  align-items: center;
+  margin-bottom: 20px;
+  p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 20px;
+  }
+}
+
+.fund-page {
+  align-items: center;
+  margin-bottom: 200px;
+}
+
+.fund-page-search {
+  padding: 10px;
+  width: 400px;
+  font-size: 14px;
+  
+  border: 2px solid #450953;
+  border-radius: 5px;
+}
