@@ -26,7 +26,7 @@ export class Form2 extends React.Component {
           <div className="form2-form">
           <form onSubmit={this.handleSubmit}>
           <label>
-              My current savings is <span role="img" aria-label="flying-money-emoji">️💸</span>
+              I currently have this much saved
               <br/>
               <input 
                 type="number"
@@ -38,7 +38,7 @@ export class Form2 extends React.Component {
             </label>
               <br/>
             <label>
-              My yearly income is <span role="img" aria-label="money-pile-emoji">️💵</span>
+              My yearly income is
               <br/>
               <input 
                 type="number"
@@ -50,7 +50,7 @@ export class Form2 extends React.Component {
             </label>
             <br/>
             <label>
-              My contribution rate is (in %)
+              I contribute this % of my paycheck to my 401k
               <br/>
               <input 
                 type="number"
@@ -64,7 +64,7 @@ export class Form2 extends React.Component {
             </label>
             <br/>
             <label>
-              My employer matches (in %) 
+              My employer matches my contribution by this % 
               <br/>
               <input 
                 type="number"

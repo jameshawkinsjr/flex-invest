@@ -64,7 +64,6 @@ class SessionForm extends React.Component {
                     this.props.closeModal();
                 }
         });
-
     }
 
     handleLogin(e) {

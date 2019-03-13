@@ -5,9 +5,9 @@
 }
 
 .chart-layout {
-    height: 85vh;
-    border-top: 1px solid rgba(248, 248, 248, 0.623);;
+    height: 60vh;
     background: #e9e9e9;
+    padding-bottom: 200px;
 }
 
 .recharts-surface {
@@ -26,15 +26,38 @@
     padding: 10px;
 }
 
+.recharts-default-legend {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+strike {
+    text-decoration: line-through;
+}
+
+.chart-header {
+    justify-content: center;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 40px;
+    background: #e9e9e9;  
+    font-family: sans-serif;
+}
+
+.chart-arrows {
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 40px;
+    background: #e9e9e9;  
+}
 .chart-inputs {
     padding: 20px;
     font-size: 12px;
-    height: 300px;
+    height: 100%;
     width: auto;
     background: lightgrey;
     color: darkslategray;
     font-family: sans-serif;
-    border: 1px solid lightgrey;
     border-radius: 4px;
     -webkit-align-items: center;
     align-items: center;
@@ -46,8 +69,8 @@
 
 .chart-1 {
     align-items: center;
-    width: 50%;
-    justify-content: space-evenly;
+    width: 100%;
+    justify-content: center;
 }
 
 .recharts-default-legend {
@@ -58,4 +81,41 @@
 .recharts-legend-wrapper {
     justify-content: center;
     // width: 500px;
+}
+
+.chart-title {
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+
+.chart-input {
+    padding: 10px;
+}
+
+.chart-slider-bottom {
+    justify-content: space-between;
+}
+
+.chart-slider {
+    align-self: flex-start;
+}
+
+.chart-slider-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
+.chart-variable-rate {
+    text-align: right;
+    background: white;
+    width: 60px;
+    margin-left: 10px;
+    padding: 5px;
+    font-weight: 700;
+}
+
+.chart-variable-rate-title {
+    padding: 5px 0;
+    text-align: left;
 }
