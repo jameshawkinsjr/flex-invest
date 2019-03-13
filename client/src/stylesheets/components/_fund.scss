@@ -66,10 +66,3 @@ td {
   border-radius: 5px;
   border: 1px solid #450953;
 }
-
-input:focus, textarea:focus {
-  outline: none !important;
-  -webkit-box-shadow:inset 0px 0px 0px 2px #450953;
-  -moz-box-shadow:inset 0px 0px 0px 2px #450953;
-  box-shadow:inset 0px 0px 0px 2px #450953;
-}
