@@ -35,6 +35,7 @@ class Chart extends React.Component {
 
     componentDidMount() {
       this.calculationFormula();
+      this.props.fetchFunds();
       // if ( this.state.yearToRetire && this.state.income && this.state.savingRate && this.state.employerMatch && this.state.currentSavings){
       // } else {
       //   this.props.history.push("/info");
