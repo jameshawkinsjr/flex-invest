@@ -172,58 +172,59 @@ class Chart extends React.Component {
         };
 
         return (
-          <div className="chart-layout flex-column">
-          <div>
-            <div className="chart-container flex">
-                <LineChart 
-                    width={500} height={300} data={this.state.chartData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
-                >
-                <XAxis dataKey="name" />
-                <YAxis tickFormatter={toDollars} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate with Employer Match"
-                    dataKey="line2"
-                    strokeOpacity={opacity.savings}
-                    dot={false} 
-                    activeDot={{ r: 1 }} 
-                    animationBegin={0}
-                    animationDuration={500}
-                    stroke="#4840BA"
-                  />
-                {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate without Employer Match"
-                    dataKey="line1"
-                    strokeOpacity={opacity.savings2}
-                    dot={false}
-                    animationBegin={0}
-                    animationDuration={500}
-                    activeDot={{ r: 1 }}
-                    stroke="#4483EF"
-                  />
-                <Line 
-                    legendType="square"
-                    type="monotone"
-                    name="Saving Rate with no monthly contributions"
-                    dataKey="line3"
-                    strokeOpacity={opacity.savings3}
-                    dot={false}
-                    animationBegin={0}
-                    animationDuration={500}
-                    activeDot={{ r: 1 }}
-                    stroke="#400000"
-                  />
-                </LineChart>
-            
-            <div>
+          <div className="chart-layout flex">
+            <div className="chart-1 flex">
+              <div className="chart-container flex-column">
+                  <LineChart 
+                      width={500} height={400} data={this.state.chartData}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+                  >
+                  <XAxis dataKey="name" />
+                  <YAxis tickFormatter={toDollars} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with Employer Match"
+                      dataKey="line2"
+                      strokeOpacity={opacity.savings}
+                      dot={false} 
+                      activeDot={{ r: 1 }} 
+                      animationBegin={0}
+                      animationDuration={500}
+                      stroke="#4840BA"
+                    />
+                  {/* <Line type="monotone" dataKey="Savings" strokeOpacity={opacity.savings} stroke="#4840BA" activeDot={{ r: 1 }} /> */}
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with no Match"
+                      dataKey="line1"
+                      strokeOpacity={opacity.savings2}
+                      dot={false}
+                      animationBegin={0}
+                      animationDuration={500}
+                      activeDot={{ r: 1 }}
+                      stroke="#4483EF"
+                    />
+                  <Line 
+                      legendType="square"
+                      type="monotone"
+                      name="Saving Rate with no monthly contribution"
+                      dataKey="line3"
+                      strokeOpacity={opacity.savings3}
+                      dot={false}
+                      animationBegin={0}
+                      animationDuration={500}
+                      activeDot={{ r: 1 }}
+                      stroke="#400000"
+                    />
+                  </LineChart>
+              </div>
+              <div>
                   <div className="chart-inputs">
+
                     {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
                     Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
                     <br/>
@@ -256,62 +257,57 @@ class Chart extends React.Component {
                   </div>
               </div>
             </div>
-            </div>
-            {/* <div>
-              <PieChart width={500} height={300}>
-                <Pie data={this.state.pieChart} dataKey="line1"  nameKey="line" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
-              </PieChart>
-            </div> */}
-            <div className="chart-container flex">
-            Balance Accumulation Graph
-            <AreaChart 
-                  width={500}
-                  height={300}
-                  data={this.state.principalChartData} 
-                  margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
-            >
-              <defs>
-                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-                </linearGradient>
-                
-                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-                <XAxis dataKey="name" />
-                <YAxis tickFormatter={toDollars} />
-                <Tooltip content={<CustomTooltip2 />} />
-                <Area 
-                    legendType="square"
-                    type="monotone" 
-                    name="Interest Earned"
-                    dataKey="line1" 
-                    stroke="#82119e" 
-                    fill="#82119e" 
-                    animationBegin={0}
-                    animationDuration={500}
-                />
-                <Area 
-                    legendType="square"
-                    type="monotone" 
-                    name="Principal Investment"
-                    dataKey="line2" 
-                    stroke="#450953"
-                    fill="#450953" 
-                    animationBegin={0}
-                    animationDuration={500}
-                />
+        
+          <div className="chart-container flex">
+          Balance Accumulation Graph
+          <AreaChart 
+                width={500}
+                height={300}
+                data={this.state.principalChartData} 
+                margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+          >
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+              </linearGradient>
+              
+              <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+              <XAxis dataKey="name" />
+              <YAxis tickFormatter={toDollars} />
+              <Tooltip content={<CustomTooltip2 />} />
+              <Area 
+                  legendType="square"
+                  type="monotone" 
+                  name="Interest Earned"
+                  dataKey="line1" 
+                  stroke="#82119e" 
+                  fill="#82119e" 
+                  animationBegin={0}
+                  animationDuration={500}
+              />
+              <Area 
+                  legendType="square"
+                  type="monotone" 
+                  name="Principal Investment"
+                  dataKey="line2" 
+                  stroke="#450953"
+                  fill="#450953" 
+                  animationBegin={0}
+                  animationDuration={500}
+              />
 
 
 
-                <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
-            </AreaChart>
+              <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+          </AreaChart>
 
-            </div>
-        </div>
+          </div>
+      </div>
         )
 
       }
