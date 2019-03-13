@@ -97,8 +97,8 @@ export class Form2 extends React.Component {
               onChange = {this.props.updateNumber("totalContribution")}
               placeholder="Total Contribution"
               value={
-                (((this.props.state.savingRate / 100) * this.props.state.income) > 19000 ? 
-                19000 : ((this.props.state.savingRate / 100) * this.props.state.income).toFixed(2)).toString()
+                ((this.props.state.savingRate / 100) * this.props.state.income) > 19000 ? 
+                19000 : ((this.props.state.savingRate / 100) * this.props.state.income).toFixed(2)
               }
             />
           </label>
