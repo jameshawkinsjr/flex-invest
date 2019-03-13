@@ -14,14 +14,8 @@ class Chart extends React.Component {
               currentSavings,
               estimatedRateOfReturn: 0.08,
               currentYear: new Date().getFullYear(),
-              opacity: {
-                  savings: 1,
-                  savings2: 1,
-                  savings3: 1,
-              },
               chartData: [],
               principalChartData: [],
-              pieChart: [],
             };
         } else {
           this.state = {
@@ -32,17 +26,10 @@ class Chart extends React.Component {
               currentSavings: 10000,
               estimatedRateOfReturn: 0.08,
               currentYear: new Date().getFullYear(),
-            opacity: {
-              savings: 1,
-              savings2: 1,
-              savings3: 1,
-            },
-            chartData: [],
-            principalChartData: [],
-            pieChart: [],
+              chartData: [],
+              principalChartData: [],
           }
         }
-        this.clearChart = this.clearChart.bind(this);
     }
 
     componentDidMount() {
@@ -70,7 +57,6 @@ class Chart extends React.Component {
       let employerMatch = (this.state.income * this.state.employerMatch / 12);
       let chartData = [];
       let principalChartData = [];
-      let pieChart = [];
       let principalWithoutMatch = parseInt(this.state.currentSavings);
       let principalWithMatch = parseInt(this.state.currentSavings);
       let principalWithoutContribution = parseInt(this.state.currentSavings);
@@ -85,25 +71,11 @@ class Chart extends React.Component {
         principalWithMarket = this.calculateYearReturn( principalWithMatch, (monthlyContribution +  employerMatch), 0, 12, 19000);
         principalChartData.push( {  name: i, "line1": principalNoMarket, "line2": principalWithMarket} );
         principalChartData = [...principalChartData, {  name: i, "line1": principalNoMarket, "line2": principalWithMarket} ];
-        // pieChart = [{  "line1": (principalWithMarket*.07407407407)}, {  "line1": principalWithMarket/1.08}];
       }
       this.setState({ chartData: chartData});
       this.setState({ principalChartData: principalChartData});
-      this.setState({ pieChart: pieChart});
     }
 
-    clearChart() {
-      this.setState( { chartData: [] } );
-    }
-
-    handleMouseEnter = (o) => {
-        const { dataKey } = o;
-        const { opacity } = this.state;
-    
-        this.setState({
-          opacity: { ...opacity, [dataKey]: 0.2 },
-        });
-      }
 
       handleNum(field) {
         return (e) => {
@@ -121,14 +93,6 @@ class Chart extends React.Component {
         };
       }
     
-    handleMouseLeave = (o) => {
-      const { dataKey } = o;
-      const { opacity } = this.state;
-  
-      this.setState({
-        opacity: { ...opacity, [dataKey]: 1 },
-      });
-    }
 
 
     render() {
@@ -172,23 +136,26 @@ class Chart extends React.Component {
         };
 
         return (
+          <div className="chart-page flex-column">
+          <div className="chart-header">Your Future</div>
+          <div className="chart-arrows flex"><span role="img" aria-label="arrow-emoji">↙️</span><pre>                  </pre><span role="img" aria-label="arrow-emoji">↘️</span></div>
           <div className="chart-layout flex">
             <div className="chart-1 flex">
               <div className="chart-container flex-column">
+              <div className="chart-title">{`401k Interest Accrual & Employer Match calculator`}</div>
                   <LineChart 
                       width={500} height={400} data={this.state.chartData}
-                      margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 20, }}
                   >
                   <XAxis dataKey="name" />
                   <YAxis tickFormatter={toDollars} />
                   <Tooltip content={<CustomTooltip />} />
-                  <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                  <Legend />
                   <Line 
                       legendType="square"
                       type="monotone"
-                      name="Saving Rate with Employer Match"
+                      name="with employer match"
                       dataKey="line2"
-                      strokeOpacity={opacity.savings}
                       dot={false} 
                       activeDot={{ r: 1 }} 
                       animationBegin={0}
@@ -199,9 +166,8 @@ class Chart extends React.Component {
                   <Line 
                       legendType="square"
                       type="monotone"
-                      name="Saving Rate with no Match"
+                      name="without employer match"
                       dataKey="line1"
-                      strokeOpacity={opacity.savings2}
                       dot={false}
                       animationBegin={0}
                       animationDuration={500}
@@ -211,9 +177,8 @@ class Chart extends React.Component {
                   <Line 
                       legendType="square"
                       type="monotone"
-                      name="Saving Rate with no monthly contribution"
+                      name="without monthly contributions"
                       dataKey="line3"
-                      strokeOpacity={opacity.savings3}
                       dot={false}
                       animationBegin={0}
                       animationDuration={500}
@@ -222,49 +187,44 @@ class Chart extends React.Component {
                     />
                   </LineChart>
               </div>
-              <div>
+              <div className="chart-container flex-column">
+                  <div className="chart-title">{`Input Manipulator`}</div>
                   <div className="chart-inputs">
-
-                    {/* Saving Rate: <input type="text" onChange={ this.handleInput() } value={this.state.savingRate}/> */}
-                    Saving Rate ({Math.floor(this.state.savingRate * 100)}%): 
-                    <br/>
-                    1% <input type="range" min={0.01} max={1} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleFloat("savingRate") }/> 100%
-                    <br/>
-                    <br/>
-                    Retirement Year ({Math.floor(this.state.yearToRetire)}): 
-                    <br/>
-                    {this.state.currentYear} <input type="range" min={this.state.currentYear} max={this.state.currentYear + 60} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleNum("yearToRetire") }/> {this.state.currentYear + 60}
-                    <br/>
-                    <br/>
-                    Annual Income ({toDollars(Math.floor(this.state.income))}):
-                    <br/>
-                    {toDollars(0)}<input type="range" min={0} max={1000000} step="10000" value={this.state.income} className="slider" onChange={ this.handleNum("income") }/>{toDollars(1000000)}
-                    <br/>
-                    <br/>
-                    Employer Match ({Math.floor(this.state.employerMatch*100)}%): 
-                    <br/>
-                    0% <input type="range" min={.0} max={.15} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleFloat("employerMatch") }/> 15%
-                    <br/>
-                    <br/>
-                    Estimated Yearly Market Return ({Math.floor(this.state.estimatedRateOfReturn*100)}%): 
-                    <br/>
-                    0% <input type="range" min={0.00} max={.5} step=".01" value={this.state.estimatedRateOfReturn} className="slider" onChange={ this.handleFloat("estimatedRateOfReturn") }/> 50%
-                    <br/>
-                    <br/>
-                    Current Savings ({ toDollars(Math.floor(this.state.currentSavings))}): 
-                    <br/>
-                    {toDollars(0)} <input type="range" min={0} max={1000000} step="5000" value={this.state.currentSavings} className="slider" onChange={ this.handleNum("currentSavings") }/> {toDollars(1000000)}
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Saving Rate:</div></div>
+                        <div className="chart-slider flex"><input type="range" min={0.01} max={1} step=".01" value={this.state.savingRate} className="slider" onChange={ this.handleFloat("savingRate") }/><div className="chart-variable-rate">{Math.floor(this.state.savingRate * 100)}%</div></div>
+                    </div>
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Retirement Year:</div></div>
+                        <div className="chart-slider flex"><input type="range" min={this.state.currentYear} max={this.state.currentYear + 60} step="1" value={this.state.yearToRetire} className="slider" onChange={ this.handleNum("yearToRetire") }/><div className="chart-variable-rate">{Math.floor(this.state.yearToRetire)}</div></div>
+                    </div>
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Annual Income</div></div>
+                        <div className="chart-slider flex"><input type="range" min={0} max={1000000} step="10000" value={this.state.income} className="slider" onChange={ this.handleNum("income") }/><div className="chart-variable-rate">{toDollars(Math.floor(this.state.income))}</div></div>
+                    </div>
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Employer Match:</div></div>
+                        <div className="chart-slider flex"><input type="range" min={.0} max={.15} step=".01" value={this.state.employerMatch} className="slider" onChange={ this.handleFloat("employerMatch") }/><div className="chart-variable-rate">{Math.floor(this.state.employerMatch*100)}%</div></div>
+                    </div>
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Estimated Yearly Return:</div></div>
+                        <div className="chart-slider flex"><input type="range" min={0.00} max={.5} step=".01" value={this.state.estimatedRateOfReturn} className="slider" onChange={ this.handleFloat("estimatedRateOfReturn") }/><div className="chart-variable-rate">{Math.floor(this.state.estimatedRateOfReturn*100)}%</div></div>
+                    </div>
+                    <div className="chart-input flex-column">
+                        <div className="chart-slider-title flex"><div className="chart-variable-rate-title">Current Savings:</div></div>
+                        <div className="chart-slider flex"><input type="range" min={0} max={5000000} step="1000" value={this.state.currentSavings} className="slider" onChange={ this.handleNum("currentSavings") }/><div className="chart-variable-rate">{ toDollars(Math.floor(this.state.currentSavings))}</div></div>
+                    </div>
                   </div>
               </div>
-            </div>
+            
         
-          <div className="chart-container flex">
-          Balance Accumulation Graph
+          <div className="chart-container flex-column">
+          <div className="chart-title">{`Projected Market Rate of Returns`}</div>
           <AreaChart 
                 width={500}
-                height={300}
+                height={400}
                 data={this.state.principalChartData} 
-                margin={{ top: 5, right: 30, left: 20, bottom: 5, }}
+                margin={{ top: 5, right: 30, left: 20, bottom: 20, }}
           >
             <defs>
               <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -305,8 +265,9 @@ class Chart extends React.Component {
 
               <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
           </AreaChart>
-
           </div>
+          </div>
+      </div>
       </div>
         )
 
