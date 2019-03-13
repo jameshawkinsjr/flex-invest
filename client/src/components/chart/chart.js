@@ -144,7 +144,7 @@ class Chart extends React.Component {
             <div className="chart-arrows flex"><span role="img" aria-label="arrow-emoji">↙️</span><pre>                  </pre><span role="img" aria-label="arrow-emoji">↘️</span></div>
             <div className="chart-layout flex">
               <div className="chart-1 flex">
-                <Animated animationIn="zoomIn" animationOut="rubberBand" isVisible={true}>
+                <Animated animationIn="zoomInLeft" animationOut="rubberBand" isVisible={true}>
                 <div className="chart-container flex-column">
                 <div className="chart-title">{`401k Interest Accrual & Employer Match calculator`}</div>
                     <LineChart 
@@ -192,6 +192,8 @@ class Chart extends React.Component {
                     </LineChart>
                 </div>
                 </Animated>
+                
+                <Animated animationIn="zoomIn" animationDuration="5" animationOut="rubberBand" isVisible={true}>
                 <div className="chart-container flex-column">
                     <div className="chart-title">{`Input Manipulator`}</div>
                     <div className="chart-inputs">
@@ -221,8 +223,10 @@ class Chart extends React.Component {
                       </div>
                     </div>
                 </div>
+            </Animated>
+
               
-            <Animated animationIn="zoomIn" animationOut="rubberBand" isVisible={true}>
+            <Animated animationIn="zoomInRight" animationOut="rubberBand" isVisible={true}>
             <div className="chart-container flex-column">
             <div className="chart-title">{`Projected Market Rate of Returns`}</div>
             <AreaChart 
