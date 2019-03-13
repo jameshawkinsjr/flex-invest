@@ -261,15 +261,11 @@ class Chart extends React.Component {
                   animationBegin={0}
                   animationDuration={500}
               />
-
-
-
               <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
           </AreaChart>
           </div>
           </div>
       </div>
-        <Link className="fund-page" to={'/funds'}> <span role="img" aria-label="forward-arrow-emoji">️➡️</span> Let's get started ️️️<span role="img" aria-label="forward-arrow-emoji">️➡️</span></Link>
       </div>
         )
 
