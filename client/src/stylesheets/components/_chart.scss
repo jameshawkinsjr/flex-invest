@@ -24,6 +24,8 @@
     font-size: 10px;
     background: $white;
     padding: 10px;
+    border: 1px solid #82119e;
+    border-radius: 5px;
 }
 
 .recharts-default-legend {
@@ -41,7 +43,7 @@ strike {
     padding-top: 40px;
     font-size: 40px;
     background: #e9e9e9;  
-    font-family: sans-serif;
+    font-family: $font-sans-serif;
 }
 
 .chart-arrows {
@@ -57,7 +59,7 @@ strike {
     width: auto;
     background: lightgrey;
     color: darkslategray;
-    font-family: sans-serif;
+    font-family: $font-sans-serif;
     border-radius: 4px;
     -webkit-align-items: center;
     align-items: center;
@@ -80,6 +82,7 @@ strike {
 
 .recharts-legend-wrapper {
     justify-content: center;
+    font-size: 12px;
     // width: 500px;
 }
 

@@ -19,12 +19,35 @@
     height: 85vh;
 
     p {
+        font-size: 16px;
         margin: 50px;
+        font-weight: 700;
     }
+
+}
+
+.hero-introduction {
+    h1 {
+        padding: 20px;
+    }
+    h2 {
+        padding: 20px;
+    }
+    align-self: center;
+    justify-self: center;
+    margin: 20px 0;
+    padding: 40px;
+    background: #f3f3f3f3;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.479);
+
 }
 
 .call-to-action {
+    width: 200px;
     text-align:center;
+    align-self: center;
     opacity: 1;
     padding: 15px 25px;
     margin-top: 30px;
@@ -32,22 +55,25 @@
     font-weight: 500;
     background: #1e88e5;
     border-radius: 5px;
-    -webkit-animation: bounce .3s alternate;
-    -moz-animation: bounce .3s alternate;
-    animation: bounce .3s alternate;
+    /// Animation
+    -webkit-animation: shadow-pulse 2s 1;
+    -moz-animation: shadow-pulse 2s 1;
+    animation: shadow-pulse 2s 1;
+    -webkit-animation-delay: 1.5s;
+    -moz-animation-delay: 1.5s;
+    animation-delay: 1.5s;
   }
-
 .call-to-action:hover {
    background: #1879cd;
 }
 
-@-webkit-keyframes bounce {
-to { -webkit-transform: scale(1.5); }
-}
-@-moz-keyframes bounce {
-to { -moz-transform: scale(1.5); }
-}
-@keyframes bounce {
-to { transform: scale(1.5); }
+@keyframes shadow-pulse
+{
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.281);
+    }
+    100% {
+        box-shadow: 0 0 0 25px rgba(0, 0, 0, 0);
+    }
 }
 
