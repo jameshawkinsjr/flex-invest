@@ -9,8 +9,8 @@ It was build using the following technologies:
 
 # Features 
 ### Current Features
-* [Input data and viewing charts]()
-* [Viewing funds index]()
+* [Input data and viewing charts](https://github.com/jameshawkinsjr/flex-invest#info--charts)
+* [Viewing funds index](https://github.com/jameshawkinsjr/flex-invest#viewing-projections)
 
 ### Planned Features
 * Planned Feature 1
