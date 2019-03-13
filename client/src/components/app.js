@@ -10,6 +10,7 @@ import Modal from './modal/modal';
 
 import Footer from './footer/footer';
 import ChartContainer from './chart/chart_container';
+import FundContainer from './fund/fund_container';
 
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
                 <Route exact path='/' component={LandingPage}/>
                 <Route exact path="/info" component={ProjectionFormContainer}/>
                 <Route path="/chart" component={ChartContainer}/>
+                <Route path="/funds" component={FundContainer}/>
             </Switch>
         </main>
         <footer>

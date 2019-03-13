@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+import { Link } from 'react-router-dom';
 
 class Chart extends React.Component {
     constructor(props){
@@ -268,6 +269,7 @@ class Chart extends React.Component {
           </div>
           </div>
       </div>
+        <Link className="fund-page" to={'/funds'}> <span role="img" aria-label="forward-arrow-emoji">️➡️</span> Let's get started ️️️<span role="img" aria-label="forward-arrow-emoji">️➡️</span></Link>
       </div>
         )
 
