@@ -5,7 +5,7 @@
 }
 
 .chart-layout {
-    height: 60vh;
+    // height: 60vh;
     background: #e9e9e9;
     padding-bottom: 200px;
 }
@@ -73,6 +73,7 @@ strike {
     align-items: center;
     width: 100%;
     justify-content: center;
+    flex-flow: wrap;
 }
 
 .recharts-default-legend {
