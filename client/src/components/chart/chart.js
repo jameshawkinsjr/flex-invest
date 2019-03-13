@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+import { Link } from 'react-router-dom';
 
 class Chart extends React.Component {
     constructor(props){
@@ -261,9 +262,6 @@ class Chart extends React.Component {
                   animationBegin={0}
                   animationDuration={500}
               />
-
-
-
               <Legend onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
           </AreaChart>
           </div>

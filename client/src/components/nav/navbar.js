@@ -22,6 +22,7 @@ class NavBar extends React.Component {
         if (this.props.loggedIn) {
             return (
                 <div className="modal-buttons flex">
+                        <Link className="navbar-dropdown-link" to={'/funds'}> <span role="img" aria-label="flying-money">️💸️</span> All Funds ️️️<span role="img" aria-label="flying-money">️️️️💸️</span></Link>
                         <Link className="navbar-dropdown-link" to={'/chart'}>Your Projection <span role="img" aria-label="chart-emoji">📊</span> </Link>
                         {/*</div><div className="navbar-dropdown">
                             <button className="navbar-dropdown-button">Your account</button>
@@ -30,6 +31,7 @@ class NavBar extends React.Component {
                                 <button className="navbar-dropdown-link" onClick={this.logoutCurrentUser}>Logout <span role="img" aria-label="x-button-emoji">❌</span></button>
                             {/* </div> */}
                         {/* </div> */}
+
                 </div>
             );
         } else {
