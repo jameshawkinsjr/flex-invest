@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import ProjectionForm from './projection_form';
 
 const mapStateToProps = (state, ownProps) => ({
-  user: state.session.user.id,
+  // user: state.session.user.id,
   name: "",
   yearToRetire: 0, 
   income: 0,

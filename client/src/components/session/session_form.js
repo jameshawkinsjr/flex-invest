@@ -51,27 +51,39 @@ class SessionForm extends React.Component {
 
     handleSignup(e) {
         e.preventDefault();
-        if (this.renderErrors === "") {
-            this.props.closeModal(); 
-        }
+
         let user = {
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password,
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
         };
-            this.props.signup(user, this.props.history);
+
+        this.props.signup(user, this.props.history)
+            .then ( () =>  {
+                if (this.props.errors.length === 0 ) {
+                    this.props.closeModal();
+                }
+        });
+
+        
+
+        
     }
 
     handleLogin(e) {
         e.preventDefault();
-        if (this.renderErrors === "") {
-            this.props.closeModal();
-        }
-            let user = {
-                email: this.state.email,
-                password: this.state.password,
-            };
-            this.props.login(user);
+
+        let user = {
+            email: this.state.email,
+            password: this.state.password,
+        };
+
+        this.props.login(user)
+        .then ( () =>  {
+            if (this.props.errors.length === 0 ) {
+                this.props.closeModal();
+            }
+        });
     }
     
     renderErrors() {
