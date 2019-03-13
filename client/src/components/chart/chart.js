@@ -1,11 +1,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
-<<<<<<< HEAD
 import {Animated} from "react-animated-css";
 
-=======
-import { Link } from 'react-router-dom';
->>>>>>> master
 
 class Chart extends React.Component {
     constructor(props){
