@@ -21,12 +21,12 @@ export class Form2 extends React.Component {
       <div className="form2-parent">
         <div className="form2-container">
           <div className="form2-title">
-            Let's get personal
+          <span role="img" aria-label="money-face-emoji">️🤑</span> Let's get personal <span role="img" aria-label="money-face-emoji">️🤑</span>
           </div>
           <div className="form2-form">
           <form onSubmit={this.handleSubmit}>
           <label>
-              My current savings is 
+              My current savings is <span role="img" aria-label="flying-money-emoji">️💸</span>
               <br/>
               <input 
                 type="number"
@@ -38,7 +38,7 @@ export class Form2 extends React.Component {
             </label>
               <br/>
             <label>
-              My yearly income is 
+              My yearly income is <span role="img" aria-label="money-pile-emoji">️💵</span>
               <br/>
               <input 
                 type="number"
@@ -77,10 +77,10 @@ export class Form2 extends React.Component {
               />
             </label>
             <br/>
-            <input type="submit" value="submit"/>
+            <input type="submit" value=" submit ➡️"/>
           </form>
           </div>
-          <input className="form2-back" type="submit" value="back" onClick={this.props.decreaseFormState}/>
+          <input className="form2-back" type="submit" value="⏪ back" onClick={this.props.decreaseFormState}/>
         </div>
         
         <Animated animationIn="bounceInRight" animationOut="rubberBand" isVisible={true}>
