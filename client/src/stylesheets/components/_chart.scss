@@ -51,6 +51,11 @@ strike {
     padding-top: 10px;
     font-size: 40px;
     background: #e9e9e9;  
+    align-items: center;
+    p {
+        margin: 10px;
+        font-weight: 700;
+    }
 }
 .chart-inputs {
     padding: 20px;

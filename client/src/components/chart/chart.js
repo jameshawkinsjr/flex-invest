@@ -140,7 +140,7 @@ class Chart extends React.Component {
         return (
           <div className="chart-page flex-column">
           <div className="chart-header">Your Future</div>
-          <div className="chart-arrows flex"><span role="img" aria-label="arrow-emoji">↙️</span><pre>                  </pre><span role="img" aria-label="arrow-emoji">↘️</span></div>
+          <div className="chart-arrows flex"><span role="img" aria-label="arrow-emoji">↙️</span><p> See the value of compound interest!</p><span role="img" aria-label="arrow-emoji">↘️</span></div>
           <div className="chart-layout flex">
             <div className="chart-1 flex">
               <div className="chart-container flex-column">

@@ -56,9 +56,9 @@
     background: #1e88e5;
     border-radius: 5px;
     /// Animation
-    -webkit-animation: shadow-pulse 2s 1;
-    -moz-animation: shadow-pulse 2s 1;
-    animation: shadow-pulse 2s 1;
+    -webkit-animation: shadow-pulse 10s infinite;
+    -moz-animation: shadow-pulse 10s infinite;
+    animation: shadow-pulse 10s infinite;
     -webkit-animation-delay: 1.5s;
     -moz-animation-delay: 1.5s;
     animation-delay: 1.5s;
@@ -71,6 +71,9 @@
 {
     0% {
         box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.281);
+    }
+    15% {
+        box-shadow: 0 0 0 25px rgba(0, 0, 0, 0);
     }
     100% {
         box-shadow: 0 0 0 25px rgba(0, 0, 0, 0);
