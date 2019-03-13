@@ -108,19 +108,19 @@ class SessionForm extends React.Component {
                     <input type="text"
                     value={this.state.name}
                     onChange={this.handleUpdate('name')}
-                    placeholder="  Name"
+                    placeholder="Name"
                     />
                     ) : ( "" )
                     }
                     <input type="text"
                         value={this.state.email}
                         onChange={this.handleUpdate('email')}
-                        placeholder="  Email"
+                        placeholder="Email"
                     />
-                    <input type=" password"
+                    <input type="password"
                         value={this.state.password}
                         onChange={this.handleUpdate('password')}
-                        placeholder="  Password"
+                        placeholder="Password"
                     />
                     <input className="input-submit" type="submit" value="Submit" />
                     {/* <button onClick={() => this.props.openModal('login')}>Login</button> */}

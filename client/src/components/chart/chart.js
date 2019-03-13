@@ -1,7 +1,11 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+<<<<<<< HEAD
 import {Animated} from "react-animated-css";
 
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> master
 
 class Chart extends React.Component {
     constructor(props){
@@ -36,6 +40,7 @@ class Chart extends React.Component {
 
     componentDidMount() {
       this.calculationFormula();
+      this.props.fetchFunds();
       // if ( this.state.yearToRetire && this.state.income && this.state.savingRate && this.state.employerMatch && this.state.currentSavings){
       // } else {
       //   this.props.history.push("/info");
