@@ -39,8 +39,8 @@ class NavBar extends React.Component {
                 <div className="flex modal-buttons">
                     <Link className="navbar-dropdown-link" to={'/funds'}> <span role="img" aria-label="flying-money">️️️️💸️</span> All Funds ️️️<span role="img" aria-label="flying-money">️️️️💸️</span></Link>
                     <Link className="navbar-dropdown-link" to={'/chart'}> <span role="img" aria-label="chart-emoji">📊</span> Projection ️️️<span role="img" aria-label="chart-emoji">📊</span></Link>
-                    <button onClick={() => this.props.openModal('login')}>Login <span role="img" aria-label="checkmark-emoji">✅</span></button>
-                    <button onClick={() => this.props.openModal('signup')}>Signup <span role="img" aria-label="up-arrow-emoji">⬆️</span>️</button>
+                    <button className="navbar-dropdown-link" onClick={() => this.props.openModal('login')}>Login <span role="img" aria-label="checkmark-emoji">✅</span></button>
+                    <button className="navbar-dropdown-link" onClick={() => this.props.openModal('signup')}>Signup <span role="img" aria-label="up-arrow-emoji">⬆️</span>️</button>
                 </div>
             )
         }
