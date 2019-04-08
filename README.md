@@ -10,11 +10,8 @@ It was build using the following technologies:
 # Features 
 ### Current Features
 * [Input data and viewing charts](https://github.com/jameshawkinsjr/flex-invest#info--charts)
-* [Viewing funds index](https://github.com/jameshawkinsjr/flex-invest#viewing-projections)
-
-### Planned Features
-* Planned Feature 1
-* Planned Feature 2
+* [Viewing projections](https://github.com/jameshawkinsjr/flex-invest#viewing-projections)
+* [Fund search](https://github.com/jameshawkinsjr/flex-invest#fund-search)
 
 ## Info & Charts
 ### Inputting Info
@@ -30,6 +27,7 @@ second form that asks for financial info.
 *** 
 <br>
 
+
 ## Viewing Projections
 Once the form has been filled out, the user is brought to a page with charts of their
 projections. This was achieved through [recharts](https://github.com/recharts/recharts).
@@ -39,3 +37,11 @@ and view in real time what the changes would be.
 ![Viewing Projections](https://github.com/jameshawkinsjr/flex-invest/blob/master/client/public/view_projection.gif)
 ***
 <br>
+
+## Funds
+### Fund Search
+Search tool allows for fuzzy searching of multiple types of data from the fund index
+![Fuzzy Search Funds](https://github.com/jameshawkinsjr/flex-invest/blob/master/client/public/fundsearch.gif)
+***
+<br>
+
